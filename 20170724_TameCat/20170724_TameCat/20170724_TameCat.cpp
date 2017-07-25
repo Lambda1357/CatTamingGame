@@ -55,7 +55,11 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     return (int) msg.wParam;
 }
 
+LRESULT CALLBACK PopupProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
+{
 
+	return DefWindowProc(hWnd, message, wParam, lParam);
+}
 
 //
 //  ÇÔ¼ö: MyRegisterClass()
@@ -123,6 +127,12 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 //
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
+	HWND hPopup;
+	static WNDCLASS wndclass;
+	wndclass.lpfnWndProc = PopupProc;
+	wndclass.lpszClassName = TEXT("Popup");
+	wndclass.hbrBackground = (HBRUSH)GetStockObject(WHITE_BRUSH);
+	RegisterClass(&wndclass);
 	RECT rc;
     switch (message)
     {
@@ -130,6 +140,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		SetRect(&rc, 0, 0, 978, 600);
 		AdjustWindowRect(&rc, WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX, FALSE);
 		SetWindowPos(hWnd, NULL, 0, 0, rc.right - rc.left, rc.bottom - rc.top, SWP_NOMOVE | SWP_NOZORDER);
+		hPopup = CreateWindow(TEXT("Popup"), TEXT("Popup"), WS_POPUP|WS_VISIBLE, 100, 100, 300, 100, hWnd, nullptr, hInst, nullptr);
 		break;
     case WM_COMMAND:
         {
@@ -148,6 +159,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             }
         }
         break;
+	case WM_LBUTTONDOWN:
+		
+		break;
     case WM_PAINT:
         {
             PAINTSTRUCT ps;
@@ -184,3 +198,4 @@ INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
     }
     return (INT_PTR)FALSE;
 }
+
