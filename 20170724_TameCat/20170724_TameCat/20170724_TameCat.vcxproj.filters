@@ -41,6 +41,9 @@
     <ClCompile Include="20170724_TameCat.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="MainGame.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="20170724_TameCat.rc">

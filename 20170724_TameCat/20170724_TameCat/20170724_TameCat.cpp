@@ -3,6 +3,7 @@
 
 #include "stdafx.h"
 #include "20170724_TameCat.h"
+#include "MainGame.h"
 
 #define MAX_LOADSTRING 100
 
@@ -10,6 +11,7 @@
 HINSTANCE hInst;                                // 현재 인스턴스입니다.
 WCHAR szTitle[MAX_LOADSTRING]=TEXT("하찮은 고먐미!");                  // 제목 표시줄 텍스트입니다.
 WCHAR szWindowClass[MAX_LOADSTRING]=TEXT("TameCat");            // 기본 창 클래스 이름입니다.
+HWND g_hWnd;
 
 // 이 코드 모듈에 들어 있는 함수의 정방향 선언입니다.
 ATOM                MyRegisterClass(HINSTANCE hInstance);
@@ -103,6 +105,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 
    HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_CAPTION|WS_SYSMENU|WS_MINIMIZEBOX,
       CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
+   g_hWnd = hWnd;
 
    if (!hWnd)
    {
@@ -127,12 +130,14 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 //
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
+
 	HWND hPopup;
 	static WNDCLASS wndclass;
 	wndclass.lpfnWndProc = PopupProc;
 	wndclass.lpszClassName = TEXT("Popup");
 	wndclass.hbrBackground = (HBRUSH)GetStockObject(WHITE_BRUSH);
 	RegisterClass(&wndclass);
+
 	RECT rc;
     switch (message)
     {
@@ -140,7 +145,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		SetRect(&rc, 0, 0, 978, 600);
 		AdjustWindowRect(&rc, WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX, FALSE);
 		SetWindowPos(hWnd, NULL, 0, 0, rc.right - rc.left, rc.bottom - rc.top, SWP_NOMOVE | SWP_NOZORDER);
+
 		hPopup = CreateWindow(TEXT("Popup"), TEXT("Popup"), WS_POPUP|WS_VISIBLE, 100, 100, 300, 100, hWnd, nullptr, hInst, nullptr);
+
 		break;
     case WM_COMMAND:
         {
