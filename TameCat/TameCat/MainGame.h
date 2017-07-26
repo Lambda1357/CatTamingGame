@@ -1,6 +1,11 @@
 #pragma once
 #include "stdafx.h"
 
+class User
+{
+public:
+
+};
 class Game
 {
 public:
