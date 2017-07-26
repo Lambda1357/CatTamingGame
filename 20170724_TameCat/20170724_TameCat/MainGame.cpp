@@ -3,7 +3,7 @@
 
 void initialize()
 {
-	m_hdc = GetDC(g_hWnd); //창핸들 받아 DC생성
+	m_hdc = GetDC(g_hWnd); //창핸들 받아 DC생성 tylrhd
 	//고양이 관리정보 초기화
 	butler = { 0 };
 	butler.collectPer = 0;
