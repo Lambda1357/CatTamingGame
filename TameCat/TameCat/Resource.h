@@ -1,18 +1,18 @@
 //{{NO_DEPENDENCIES}}
 // Microsoft Visual C++ generated include file.
-// Used by 20170724_TameCat.rc
+// Used by TameCat.rc
 //
 
 #define IDS_APP_TITLE			103
 
 #define IDR_MAINFRAME			128
-#define IDD_MY20170724_TAMECAT_DIALOG	102
+#define IDD_TAMECAT_DIALOG	102
 #define IDD_ABOUTBOX			103
 #define IDM_ABOUT				104
 #define IDM_EXIT				105
-#define IDI_MY20170724_TAMECAT			107
+#define IDI_TAMECAT			107
 #define IDI_SMALL				108
-#define IDC_MY20170724_TAMECAT			109
+#define IDC_TAMECAT			109
 #define IDC_MYICON				2
 #ifndef IDC_STATIC
 #define IDC_STATIC				-1

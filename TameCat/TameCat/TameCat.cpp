@@ -1,17 +1,17 @@
-// 20170724_TameCat.cpp : 응용 프로그램에 대한 진입점을 정의합니다.
+// TameCat.cpp : 응용 프로그램에 대한 진입점을 정의합니다.
 //
 
 #include "stdafx.h"
-#include "20170724_TameCat.h"
+#include "TameCat.h"
 #include "MainGame.h"
 
 #define MAX_LOADSTRING 100
 
+Game GMain;
 // 전역 변수:
-HINSTANCE hInst;                                // 현재 인스턴스입니다.
-WCHAR szTitle[MAX_LOADSTRING]=TEXT("하찮은 고먐미!");                  // 제목 표시줄 텍스트입니다.
-WCHAR szWindowClass[MAX_LOADSTRING]=TEXT("TameCat");            // 기본 창 클래스 이름입니다.
-HWND g_hWnd;
+HINSTANCE hInst;														     // 현재 인스턴스입니다.
+WCHAR szTitle[MAX_LOADSTRING]=TEXT("하찮고 귀엽고 사랑스러운 고먐미");		  	// 제목 표시줄 텍스트입니다.
+WCHAR szWindowClass[MAX_LOADSTRING]=TEXT("TameCat");						 // 기본 창 클래스 이름입니다.
 
 // 이 코드 모듈에 들어 있는 함수의 정방향 선언입니다.
 ATOM                MyRegisterClass(HINSTANCE hInstance);
@@ -31,7 +31,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     // 전역 문자열을 초기화합니다.
     LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
-    LoadStringW(hInstance, IDC_MY20170724_TAMECAT, szWindowClass, MAX_LOADSTRING);
+    LoadStringW(hInstance, IDC_TAMECAT, szWindowClass, MAX_LOADSTRING);
     MyRegisterClass(hInstance);
 
     // 응용 프로그램 초기화를 수행합니다.
@@ -40,28 +40,31 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         return FALSE;
     }
 
-    HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_MY20170724_TAMECAT));
+    HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_TAMECAT));
 
-    MSG msg;
+	MSG msg = { 0 };
 
     // 기본 메시지 루프입니다.
-    while (GetMessage(&msg, nullptr, 0, 0))
+	while (msg.message != WM_QUIT)
     {
-        if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
+        if (PeekMessage(&msg,NULL,0,0,PM_REMOVE))
         {
             TranslateMessage(&msg);
             DispatchMessage(&msg);
         }
+		else
+		{
+			GMain.Update();
+			GMain.Render();
+		}
+		
+
     }
 
     return (int) msg.wParam;
 }
 
-LRESULT CALLBACK PopupProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
-{
 
-	return DefWindowProc(hWnd, message, wParam, lParam);
-}
 
 //
 //  함수: MyRegisterClass()
@@ -79,10 +82,10 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
     wcex.cbClsExtra     = 0;
     wcex.cbWndExtra     = 0;
     wcex.hInstance      = hInstance;
-    wcex.hIcon          = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_MY20170724_TAMECAT));
+    wcex.hIcon          = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_TAMECAT));
     wcex.hCursor        = LoadCursor(nullptr, IDC_ARROW);
     wcex.hbrBackground  = (HBRUSH)(COLOR_WINDOW+1);
-    wcex.lpszMenuName   = NULL;
+    wcex.lpszMenuName   = MAKEINTRESOURCEW(IDC_TAMECAT);
     wcex.lpszClassName  = szWindowClass;
     wcex.hIconSm        = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
 
@@ -103,10 +106,8 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
    hInst = hInstance; // 인스턴스 핸들을 전역 변수에 저장합니다.
 
-   HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_CAPTION|WS_SYSMENU|WS_MINIMIZEBOX,
+   HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
       CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
-   g_hWnd = hWnd;
-
    if (!hWnd)
    {
       return FALSE;
@@ -130,24 +131,10 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 //
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
-
-	HWND hPopup;
-	static WNDCLASS wndclass;
-	wndclass.lpfnWndProc = PopupProc;
-	wndclass.lpszClassName = TEXT("Popup");
-	wndclass.hbrBackground = (HBRUSH)GetStockObject(WHITE_BRUSH);
-	RegisterClass(&wndclass);
-
-	RECT rc;
     switch (message)
     {
 	case WM_CREATE:
-		SetRect(&rc, 0, 0, 978, 600);
-		AdjustWindowRect(&rc, WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX, FALSE);
-		SetWindowPos(hWnd, NULL, 0, 0, rc.right - rc.left, rc.bottom - rc.top, SWP_NOMOVE | SWP_NOZORDER);
-
-		hPopup = CreateWindow(TEXT("Popup"), TEXT("Popup"), WS_POPUP|WS_VISIBLE, 100, 100, 300, 100, hWnd, nullptr, hInst, nullptr);
-
+		GMain.init;
 		break;
     case WM_COMMAND:
         {
@@ -166,18 +153,16 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             }
         }
         break;
-	case WM_LBUTTONDOWN:
-		
-		break;
     case WM_PAINT:
         {
             PAINTSTRUCT ps;
             HDC hdc = BeginPaint(hWnd, &ps);
-			Rectangle(hdc, 320, 20, 620, 240);
+            // TODO: 여기에 hdc를 사용하는 그리기 코드를 추가합니다.
             EndPaint(hWnd, &ps);
         }
         break;
     case WM_DESTROY:
+		GMain.Destroy;
         PostQuitMessage(0);
         break;
     default:
@@ -205,4 +190,3 @@ INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
     }
     return (INT_PTR)FALSE;
 }
-
