@@ -16,4 +16,5 @@ void Game::Render()
 
 void Game::Destroy()
 {
+	ReleaseDC(this->hWnd, this->hdc);
 }
