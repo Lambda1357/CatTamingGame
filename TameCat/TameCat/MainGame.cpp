@@ -18,3 +18,4 @@ void Game::Destroy()
 {
 	ReleaseDC(this->hWnd, this->hdc);
 }
+
