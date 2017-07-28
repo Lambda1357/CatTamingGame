@@ -1,5 +1,4 @@
 #include "stdafx.h"
-#include "Object.h"
 
 void CatNfo::init(int cCode,int pX, int pY, int szX, int szY)
 {
@@ -27,3 +26,14 @@ CatDataPkg CatNfo::GetInfo()
 	return data;
 }
 
+RECT Object::GetRect()
+{
+	RECT rc;
+
+	rc.right = posX - sizeX;
+	rc.top = posY - sizeY;
+	rc.left = posX + sizeX;
+	rc.bottom = posY + sizeY;
+
+	return rc;
+}

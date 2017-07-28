@@ -3,7 +3,6 @@
 
 #include "stdafx.h"
 #include "TameCat.h"
-#include "MainGame.h"
 
 #define MAX_LOADSTRING 100
 

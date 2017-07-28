@@ -11,7 +11,7 @@ class Object
 public:
 	void SetPos(int pX, int pY, int szX, int szY) { posX = pX, posY = pY, sizeX = szX, sizeY = szY; }
 	void SetRect(RECT rc) { sizeX = (rc.left - rc.right) / 2, sizeY = (rc.bottom - rc.top) / 2, posX = rc.right + sizeX, posY = rc.top + sizeY; }
-	BOOL Cilck();
+	RECT GetRect();
 protected:
 	int posX, posY, sizeX, sizeY;
 };
