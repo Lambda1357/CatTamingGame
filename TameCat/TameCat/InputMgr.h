@@ -14,4 +14,5 @@ public:
 	void Destoy();
 	BOOL ButtonChk(UINT msg,WPARAM wParam);
 	BOOL ObjHit(Object *hit);
+	BOOL SpaceHit();
 };

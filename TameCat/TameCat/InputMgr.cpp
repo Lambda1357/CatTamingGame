@@ -55,3 +55,10 @@ BOOL InputMgr::ObjHit(Object * hit)
 	}
 	else return FALSE;
 }
+
+BOOL InputMgr::SpaceHit()
+{
+	if (SpaceDown)
+		return TRUE;
+	return FALSE;
+}
