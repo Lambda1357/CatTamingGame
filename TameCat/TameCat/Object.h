@@ -14,6 +14,7 @@ public:
 	RECT GetRect();
 protected:
 	int posX, posY, sizeX, sizeY;
+	virtual void ClickAct() = 0;
 };
 
 class CatNfo : protected Object
@@ -26,6 +27,7 @@ public:
 	void Render();
 	void Destroy();
 private:
+	virtual void ClickAct();
 	BOOL addX, addY;
 	int Init_CatloveP(int cCode);
 	int butlerP, loveP, hungerP,catCode;
