@@ -1,11 +1,11 @@
 #pragma once
 #include "Object.h"
-class Button : protected Object
+class Btn_SceneStatus : protected Object
 {
-	BOOL aaaa;
+	virtual void Clickact();
 };
 
-class Btn_SceneChange : protected Button
+class Btn_SceneChange : protected Object
 {
-
+	virtual void ClickAct();
 };
