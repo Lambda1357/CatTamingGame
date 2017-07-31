@@ -46,7 +46,7 @@ BOOL InputMgr::ButtonChk(UINT msg, WPARAM wParam)
 
 BOOL InputMgr::ObjHit(Object * hit)
 {
-	RECT rc = hit->GetRect;
+	RECT rc = hit->GetRect();
 	if (!curClick) return FALSE;
 	if (curClick == prvClick) return FALSE;
 	if (mousePos.x >= rc.right&&mousePos.x <= rc.left&&mousePos.y >= rc.top&&mousePos.y < rc.bottom)

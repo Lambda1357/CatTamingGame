@@ -6,12 +6,12 @@ class Game
 public:
 	void Init(HWND hWnd);
 	void Update();
-	void StartRender();
-	void EndRender();
+	void Render();
 	void Destroy();
 private:
 	HWND hWnd;
-
+	void StartRender();
+	void EndRender();
 	HDC hdc;
 	HDC backdc;
 	HDC imgdc;

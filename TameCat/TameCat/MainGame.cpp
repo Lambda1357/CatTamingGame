@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "MainGame.h"
 
 void Game::Init(HWND hWnd)
@@ -16,6 +17,10 @@ void Game::Init(HWND hWnd)
 
 
 void Game::Update()
+{
+}
+
+void Game::Render()
 {
 }
 
