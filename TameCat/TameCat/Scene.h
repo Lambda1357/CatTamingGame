@@ -1,31 +1,13 @@
 #pragma once
-#include <Windows.h>
-#include "Button.h"
+#include "SceneBehavior.h"
 
 class Scene
 {
-protected:
-	TCHAR* backgroundBmp;
-public:
-	virtual void Init() {};
-	virtual void Update() {};
-	virtual void Render() {};
-	virtual void Release() {};
-
-	void SetBackground(TCHAR* adr) { backgroundBmp = adr; };
-	TCHAR* GetBackground() { return backgroundBmp; };
-
-};
-
-class StartScene : Scene
-{
 private:
-	Btn_SceneChange startBtn;
-	Btn_HowTo howto;
-	short sceneStatus;
+	Scenebehavior* myScene;
 public:
-	virtual void Init();
-	virtual void Update();
-	virtual void Render();
-	virtual void Release();
+	void Init();
+	void Update();
+	void Render();
+	void Destroy();
 };

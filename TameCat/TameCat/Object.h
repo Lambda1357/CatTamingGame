@@ -16,7 +16,7 @@ public:
 protected:
 	int posX, posY, sizeX, sizeY;
 	virtual void ClickAct() = 0;
-	HBITMAP sprite;
+	TCHAR* imgAdress;
 };
 
 class CatNfo : protected Object

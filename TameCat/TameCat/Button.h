@@ -1,11 +1,15 @@
 #pragma once
 #include "Object.h"
-class Btn_HowTo : protected Object
-{
-	virtual void ClickAct();
-};
+#include "Buttonbehavior.h"
 
-class Btn_SceneChange : protected Object
+class Button : private Object
 {
-	virtual void ClickAct();
+private:
+	Buttonbehavior* myButton;
+	void ClickAct();
+public:
+	void Init();
+	void Update();
+	void Render();
+	void Destroy();
 };
