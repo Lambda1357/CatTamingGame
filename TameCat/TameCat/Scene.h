@@ -21,7 +21,7 @@ class StartScene : Scene
 {
 private:
 	Btn_SceneChange startBtn;
-	Btn_SceneStatus HowtoBtn;
+	Btn_HowTo howto;
 	short sceneStatus;
 public:
 	virtual void Init();

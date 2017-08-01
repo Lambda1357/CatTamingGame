@@ -17,7 +17,7 @@ void InputMgr::Update(HWND hWnd)
 
 void InputMgr::Destoy()
 {
-	//파괴할게 있나?
+	//TODO:여기서 가져온 메모리 공간을 돌려줍니다.
 }
 
 BOOL InputMgr::ButtonChk(UINT msg, WPARAM wParam)

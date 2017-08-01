@@ -1,8 +1,8 @@
 #pragma once
 #include "Object.h"
-class Btn_SceneStatus : protected Object
+class Btn_HowTo : protected Object
 {
-	virtual void Clickact();
+	virtual void ClickAct();
 };
 
 class Btn_SceneChange : protected Object
