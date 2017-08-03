@@ -1,5 +1,4 @@
 #pragma once
-#include "SceneBehavior.h"
 
 class Scene
 {
@@ -10,4 +9,5 @@ public:
 	void Update();
 	void Render();
 	void Destroy();
+	void SetBehavior(SceneCode sCode);
 };

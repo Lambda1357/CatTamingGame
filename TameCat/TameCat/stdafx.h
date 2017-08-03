@@ -23,3 +23,9 @@
 #pragma comment(lib,"winmm.lib")
 #include "MainGame.h"
 #include "Object.h"
+#include "SceneManager.h"
+#include "Scene.h"
+#include "SceneBehavior.h"
+#include "Button.h"
+#include "Buttonbehavior.h"
+#include "UserData.h"

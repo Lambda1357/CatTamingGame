@@ -1,5 +1,7 @@
-#pragma once
+/*#pragma once
 #include "stdafx.h"
+
+//삭제해야 함
 
 class InputMgr
 {
@@ -15,4 +17,4 @@ public:
 	BOOL ButtonChk(UINT msg,WPARAM wParam);
 	BOOL ObjHit(Object *hit);
 	BOOL SpaceHit();
-};
+};*/

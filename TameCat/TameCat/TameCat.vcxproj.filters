@@ -19,6 +19,9 @@
     <Filter Include="Buttons">
       <UniqueIdentifier>{f6c37aa4-5323-45e1-a4e4-0652063a793d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Singletone">
+      <UniqueIdentifier>{d56469d8-73e5-42ef-a9d5-7b99e25a6e2d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -60,6 +63,9 @@
     <ClInclude Include="Buttonbehavior.h">
       <Filter>Buttons</Filter>
     </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>Singletone</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -78,6 +84,15 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="SceneBehavior.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Buttonbehavior.cpp">
+      <Filter>Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>Singletone</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
   </ItemGroup>

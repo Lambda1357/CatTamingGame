@@ -1,6 +1,6 @@
 #pragma once
 
-class Scenebehavior
+class Scenebehavior abstract
 {
 public:
 	virtual void Init() = 0;
