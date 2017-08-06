@@ -15,3 +15,8 @@ void StartScene::Render()
 void StartScene::Destroy()
 {
 }
+
+void StartScene::SetStatus(int statusCode)
+{
+	sceneStatus = statusCode;
+}

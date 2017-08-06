@@ -29,3 +29,4 @@
 #include "Button.h"
 #include "Buttonbehavior.h"
 #include "UserData.h"
+#include "InputMgr.h"

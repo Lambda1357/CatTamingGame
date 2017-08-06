@@ -153,6 +153,7 @@
     <ClInclude Include="UserData.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Button.cpp" />
     <ClCompile Include="Buttonbehavior.cpp" />
     <ClCompile Include="InputMgr.cpp" />
     <ClCompile Include="MainGame.cpp" />

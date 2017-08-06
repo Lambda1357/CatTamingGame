@@ -3,15 +3,13 @@
 
 enum SceneCode
 {
-	SC_START=0,
-	SC_HOME,
-	SC_COLLECTION,
-	SC_SHOP,
-	SC_MINIGAME,
-	SC_INVENTORY,
-
-
-	SC_IMLAST //1 »« °ªÀÌ ¾ÀÀÇ °¹¼ö
+	SN_START=0,
+	SN_HOME,
+	SN_COLLECTION,
+	SN_SHOP,
+	SN_MINIGAME,
+	SN_INVENTORY,
+	SN_IMLAST //1 »« °ªÀÌ ¾ÀÀÇ °¹¼ö
 };
 
 class SceneManager
@@ -19,7 +17,7 @@ class SceneManager
 private:
 	static SceneManager* uniqueSceneMgr;
 	Scene* curScene;
-	Scene* SceneList[SC_IMLAST - 1];
+	Scene* SceneList[SN_IMLAST - 1];
 	SceneManager() {};
 public:
 	static SceneManager* GetScenemgr();
@@ -28,7 +26,7 @@ public:
 	void Render();
 	void Destory();
 
-	void SetScene();
+	void SetCurScene(SceneCode sc);
 };
 
 #define SCENEMANAGER SceneManager::GetScenemgr()

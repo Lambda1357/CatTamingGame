@@ -1,6 +1,13 @@
 #include "stdafx.h"
 #include "InputMgr.h"
 
+InputMgr* InputMgr::GetInputMgr()
+{
+	if (Imunique == NULL)
+		Imunique = new InputMgr;
+	return Imunique;
+}
+
 void InputMgr::Init()
 {
 	curClick = FALSE;
@@ -44,7 +51,7 @@ BOOL InputMgr::ButtonChk(UINT msg, WPARAM wParam)
 	return 0;
 }
 
-BOOL InputMgr::ObjHit(Object * hit)
+BOOL InputMgr::ObjHit(Object* hit)
 {
 	RECT rc = hit->GetRect();
 	if (!curClick) return FALSE;
