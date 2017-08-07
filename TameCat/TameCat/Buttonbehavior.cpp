@@ -7,5 +7,5 @@ void StartButton::ClickAct()
 
 void HowtoButton::ClickAct()
 {
-	
+	ownerScene->GetBehavior();
 }

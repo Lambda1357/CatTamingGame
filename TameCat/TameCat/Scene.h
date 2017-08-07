@@ -10,4 +10,5 @@ public:
 	void Render();
 	void Destroy();
 	void SetBehavior(SceneCode sCode);
+	Scenebehavior* GetBehavior();
 };

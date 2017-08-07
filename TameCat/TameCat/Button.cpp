@@ -2,10 +2,11 @@
 
 void Button::Init(Scene* callScene)
 {
-	PerentScene = callScene;
+	ownerScene = callScene;
 }
 
 void Button::Update()
 {
-	if
+	if (INPUTMANEGER->ObjHit)
+		myButton->ClickAct();
 }

@@ -9,3 +9,8 @@ void Scene::SetBehavior(SceneCode sCode)
 		break;
 	}
 }
+
+Scenebehavior* Scene::GetBehavior()
+{
+	return myScene;
+}
