@@ -40,7 +40,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 	HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_TAMECAT_REWORKS));
 
-	MSG msg;
+	MSG msg = {};
 	while (WM_QUIT != msg.message)
 	{
 		// 기본 메시지 루프입니다.
@@ -149,7 +149,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	{
 		PAINTSTRUCT ps;
 		HDC hdc = BeginPaint(hWnd, &ps);
-		// TODO: 여기에 hdc를 사용하는 그리기 코드를 추가합니다.
+		Rectangle(hdc, 100, 100, 500, 500);
 		EndPaint(hWnd, &ps);
 	}
 	break;

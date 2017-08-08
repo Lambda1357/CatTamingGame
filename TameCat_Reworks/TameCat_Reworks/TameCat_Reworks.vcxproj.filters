@@ -30,12 +30,18 @@
     <ClInclude Include="TameCat_Reworks.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="SceneManeger.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="TameCat_Reworks.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManeger.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
