@@ -29,6 +29,11 @@ void SceneManeger::SetStatus(int sceneStatus)
 	curSceneStatus = sceneStatus;
 }
 
+void SceneManeger::Destroy()
+{
+	if (UniqueObj != NULL) delete UniqueObj;
+}
+
 SceneManeger::SceneManeger()
 {
 }

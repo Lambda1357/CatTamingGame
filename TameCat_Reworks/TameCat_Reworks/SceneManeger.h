@@ -19,6 +19,7 @@ public:
 	void SetScene(SceneNumber sn);
 	int GetStatus();
 	void SetStatus(int sceneStatus);
+	void Destroy();
 private:
 	static SceneManeger* UniqueObj;
 	SceneNumber curentScene;
