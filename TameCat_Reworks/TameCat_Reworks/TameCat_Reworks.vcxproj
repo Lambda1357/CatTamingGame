@@ -138,6 +138,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Cat.h" />
     <ClInclude Include="GameMain.h" />
     <ClInclude Include="InputManeger.h" />
     <ClInclude Include="Object.h" />
@@ -148,6 +149,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Cat.cpp" />
     <ClCompile Include="GameMain.cpp" />
     <ClCompile Include="InputManeger.cpp" />
     <ClCompile Include="Object.cpp" />

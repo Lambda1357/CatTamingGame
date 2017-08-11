@@ -14,6 +14,8 @@ public:
 	void Render();
 	void Destroy();
 
+
+
 	GameMain();
 	~GameMain();
 };
