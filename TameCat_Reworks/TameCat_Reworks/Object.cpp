@@ -27,8 +27,7 @@ void Object::SetPos(RECT rect)
 	posX = (rect.left + rect.right) / 2;
 	posY = (rect.top + rect.bottom) / 2;
 	sizeX = (rect.right - rect.left) / 2;
-	sizeY = (
-	rect.bottom - rect.top) / 2;
+	sizeY = (rect.bottom - rect.top) / 2;
 }
 
 void Object::SetSize(int szX, int szY)

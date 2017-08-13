@@ -23,3 +23,4 @@
 #include "SceneManeger.h"
 #include "Object.h"
 #include "GameMain.h"
+#pragma comment(lib,"msimg32.lib")

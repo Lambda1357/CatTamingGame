@@ -5,6 +5,12 @@
 void Cat::Init(TCHAR * imgRoot, CatCode m_catCode)
 {
 	Object::Init(imgRoot);
+	int randPositX = rand() % (CATALLOWBOX.right - CATALLOWBOX.left) + CATALLOWBOX.left;
+	int randPositY = rand() % (CATALLOWBOX.bottom - CATALLOWBOX.top) + CATALLOWBOX.top;
+	RECT catPosit = { randPositX,randPositY,randPositX + CATSIZE_X,randPositY + CATSIZE_Y };
+	
+	SetPos(catPosit);
+
 	myCatCode = m_catCode;
 	
 	butlerPoint = 0;
@@ -81,6 +87,32 @@ void Cat::Update()
 
 	if (ySideUp) posY += 3;
 	else posY -= 3;
+}
+
+void Cat::Render(HDC hdc)
+{
+	HDC imgDC = GetDC(hWnd);
+	HBITMAP oldBitmap = (HBITMAP)SelectObject(imgDC, myBitmap);
+
+	TransparentBlt(hdc, posX - sizeX, posY - sizeY, sizeX * 2, sizeY * 2, imgDC, 0, 0, sizeX * 2, sizeY * 2, RGB(255, 0, 255));
+	
+	SelectObject(imgDC, oldBitmap);
+	ReleaseDC(hWnd, imgDC);
+}
+
+void Cat::Destoy()
+{
+	DeleteObject(myBitmap);
+}
+
+void Cat::AddHunger(int addCnt)
+{
+	if (hungerPoint + addCnt < 100) hungerPoint += addCnt;
+	else hungerPoint = 100;
+}
+
+void Cat::AddLove(int addCnt)
+{
 }
 
 Cat::Cat()

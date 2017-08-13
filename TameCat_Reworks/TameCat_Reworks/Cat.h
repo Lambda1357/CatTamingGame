@@ -1,4 +1,8 @@
 #pragma once
+#define CATSIZE_X 100
+#define CATSIZE_Y 75
+
+extern HWND hWnd;
 
 const RECT CATALLOWBOX = { 100,80,880,480 };
 
@@ -50,7 +54,7 @@ private:
 public:
 	virtual void Init(TCHAR* imgRoot, CatCode m_catCode);
 	void Update();
-	void Render();
+	void Render(HDC hdc);
 	void Destoy();
 
 	void AddHunger(int addCnt);

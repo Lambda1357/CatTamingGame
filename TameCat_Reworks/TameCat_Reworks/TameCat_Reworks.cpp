@@ -126,7 +126,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 //
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
-	INPUTMANEGER->ButtonUpdate(message, wParam, lParam);
+	INPUTMANEGER->ClickUpdate(message, wParam, lParam);
 	switch (message)
 	{
 	case WM_COMMAND:

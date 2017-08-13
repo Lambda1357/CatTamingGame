@@ -14,7 +14,7 @@ private:
 	~InputManeger();
 public:
 	static InputManeger* GetUniqueInputMgr();
-	void ButtonUpdate(UINT msg, WPARAM wParam, LPARAM lParam);
+	void ClickUpdate(UINT msg, WPARAM wParam, LPARAM lParam);
 	BOOL IsHit(Object);
 };
 

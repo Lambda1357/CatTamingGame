@@ -17,7 +17,7 @@ InputManeger * InputManeger::GetUniqueInputMgr()
 	return UniqueObj;
 }
 
-void InputManeger::ButtonUpdate(UINT msg, WPARAM wParam,LPARAM lParam)
+void InputManeger::ClickUpdate(UINT msg, WPARAM wParam,LPARAM lParam)
 {
 	switch (msg)
 	{
