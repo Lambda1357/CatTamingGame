@@ -8,6 +8,8 @@ private:
 	HDC hdc;
 	HDC memDC;
 	Cat *catlist[20];
+	Object boxSmall;
+	Object boxFloat;
 	int curentCatnum;
 	int maxCatCount;
 public:

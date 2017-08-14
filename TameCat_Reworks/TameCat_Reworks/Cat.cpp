@@ -69,7 +69,7 @@ void Cat::Init(TCHAR * imgRoot, CatCode m_catCode)
 		_tcscpy(catName, TEXT("시공 고양이"));
 		break;
 	default:
-		_tcscpy(catName, TEXT("웅앵웅 쵸키포키"));
+		_tcscpy(catName, TEXT("이름오류! 문의주세요"));
 		break;
 	}
 }
@@ -113,6 +113,8 @@ void Cat::AddHunger(int addCnt)
 
 void Cat::AddLove(int addCnt)
 {
+	if (lovePoint + addCnt < 100) lovePoint += addCnt;
+	else lovePoint = 100;
 }
 
 Cat::Cat()

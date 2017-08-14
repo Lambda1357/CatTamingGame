@@ -5,6 +5,8 @@
 
 void GameMain::Init()
 {
+	boxSmall.Init(TEXT("./resource/boxSmall.bmp"));
+	boxSmall.SetPos()
 	for (int i = 0; i < 20; i++) catlist[i] = NULL;
 	curentCatnum = 0;
 	maxCatCount = 10;
