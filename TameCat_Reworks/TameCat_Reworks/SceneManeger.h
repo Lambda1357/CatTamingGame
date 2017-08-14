@@ -28,4 +28,4 @@ private:
 	virtual ~SceneManeger();
 };
 
-#define SCENEMANEGER SceneManager::GetUniqueScenemgr()
+#define SCENEMANEGER SceneManeger::GetUniqueScenemgr()

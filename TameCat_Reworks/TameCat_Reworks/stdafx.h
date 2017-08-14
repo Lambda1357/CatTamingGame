@@ -22,5 +22,8 @@
 #include "InputManeger.h"
 #include "SceneManeger.h"
 #include "Object.h"
+#include "Cat.h"
 #include "GameMain.h"
+#include "_ScreenCopy.h"
+
 #pragma comment(lib,"msimg32.lib")

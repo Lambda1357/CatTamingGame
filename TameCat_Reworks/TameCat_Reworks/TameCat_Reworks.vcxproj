@@ -147,6 +147,7 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="TameCat_Reworks.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="_ScreenCopy.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Cat.cpp" />
