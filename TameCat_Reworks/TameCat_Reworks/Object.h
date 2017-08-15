@@ -15,6 +15,6 @@ public:
 	RECT GetRect();
 	Object();
 	~Object();
-	
+	void Render(HDC hdc);
 };
 

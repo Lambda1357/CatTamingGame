@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "InputManeger.h"
 
+InputManeger* InputManeger::UniqueObj = NULL;
 
 InputManeger::InputManeger()
 {

@@ -6,7 +6,6 @@ enum SceneNumber
 	SN_COLLECTION,
 	SN_SHOP,
 	SN_MINIGAME,
-	SN_INVENTORY,
 
 	LAST_SN //1 –u °ªÀÌ ¾ÀÀÇ ÃÑ °¹¼ö
 };
@@ -27,5 +26,7 @@ private:
 	SceneManeger();
 	virtual ~SceneManeger();
 };
+
+
 
 #define SCENEMANEGER SceneManeger::GetUniqueScenemgr()

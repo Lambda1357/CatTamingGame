@@ -11,6 +11,17 @@ Object::~Object()
 {
 }
 
+void Object::Render(HDC hdc)
+{
+	HDC imgDC = GetDC(g_Hwnd);
+	HBITMAP oldBitmap = (HBITMAP)SelectObject(imgDC, myBitmap);
+
+	TransparentBlt(hdc, posX - sizeX, posY - sizeY, sizeX * 2, sizeY * 2, imgDC, 0, 0, sizeX * 2, sizeY * 2, RGB(255, 0, 255));
+
+	SelectObject(imgDC, oldBitmap);
+	ReleaseDC(g_Hwnd, imgDC);
+}
+
 void Object::Init(TCHAR* imageRoot)
 {
 	myBitmap = (HBITMAP)LoadImage(NULL, imageRoot, IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE | LR_CREATEDIBSECTION);

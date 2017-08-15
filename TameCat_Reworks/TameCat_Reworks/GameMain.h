@@ -8,6 +8,7 @@ private:
 	HDC hdc;
 	HDC memDC;
 	Cat *catlist[20];
+	Object background[LAST_SN - 1];
 	Object boxSmall;
 	Object boxFloat;
 	int curentCatnum;

@@ -89,17 +89,6 @@ void Cat::Update()
 	else posY -= 3;
 }
 
-void Cat::Render(HDC hdc)
-{
-	HDC imgDC = GetDC(hWnd);
-	HBITMAP oldBitmap = (HBITMAP)SelectObject(imgDC, myBitmap);
-
-	TransparentBlt(hdc, posX - sizeX, posY - sizeY, sizeX * 2, sizeY * 2, imgDC, 0, 0, sizeX * 2, sizeY * 2, RGB(255, 0, 255));
-	
-	SelectObject(imgDC, oldBitmap);
-	ReleaseDC(hWnd, imgDC);
-}
-
 void Cat::Destoy()
 {
 	DeleteObject(myBitmap);

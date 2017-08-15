@@ -18,4 +18,6 @@ public:
 	BOOL IsHit(Object);
 };
 
+
+
 #define INPUTMANEGER InputManeger::GetUniqueInputMgr()

@@ -2,6 +2,8 @@
 #include "SceneManeger.h"
 
 
+SceneManeger* SceneManeger::UniqueObj = NULL;
+
 SceneManeger* SceneManeger::GetUniqueScenemgr()
 {
 	if (UniqueObj == NULL) UniqueObj = new SceneManeger;
