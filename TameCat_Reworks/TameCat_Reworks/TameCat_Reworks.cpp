@@ -11,7 +11,7 @@ RECT clientRect = { 0,0,978,600 };
 HWND g_Hwnd;
 HINSTANCE hInst;                                // 현재 인스턴스입니다.
 WCHAR szTitle[MAX_LOADSTRING] = TEXT("하찮은 고먐미!");                  // 제목 표시줄 텍스트입니다.
-WCHAR szWindowClass[MAX_LOADSTRING];            // 기본 창 클래스 이름입니다.
+WCHAR szWindowClass[MAX_LOADSTRING] = TEXT("TameCat");            // 기본 창 클래스 이름입니다.
 
 // 이 코드 모듈에 들어 있는 함수의 정방향 선언입니다.
 ATOM                MyRegisterClass(HINSTANCE hInstance);
@@ -102,8 +102,8 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
 	hInst = hInstance; // 인스턴스 핸들을 전역 변수에 저장합니다.
 
-	HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX,
-		CW_USEDEFAULT, 0, 978, 600, nullptr, nullptr, hInstance, nullptr);
+	HWND hWnd = CreateWindow(szWindowClass, szTitle, WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX,
+		CW_USEDEFAULT, CW_USEDEFAULT, 978, 600, nullptr, nullptr, hInstance, nullptr);
 
 	
 

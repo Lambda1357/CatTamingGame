@@ -18,6 +18,10 @@ void GameMain::Init()
 	background[SN_SHOP].Init(TEXT("./resource/Background/bg_shop.bmp"));
 	background[SN_MINIGAME].Init(TEXT("./resource/Background/bg_fishing.bmp"));
 
+	RECT rc = { 420,420,420 + 145,420 + 58 };
+	//TODO:startButton.Init(TEXT("이미지경로"));
+	startButton.SetPos(rc);
+
 	for (int i = 0; i < 20; i++) catlist[i] = NULL;
 	curentCatnum = 0;
 	maxCatCount = 10;
@@ -31,9 +35,10 @@ void GameMain::Update()
 		switch (SCENEMANEGER->GetStatus())
 		{
 		case 0:
+			if (INPUTMANEGER->IsHit(startButton))
+				SCENEMANEGER->SetScene(SN_HOME);
 			break;
 		case 1:
-			
 			break;
 		}
 		break;
@@ -56,6 +61,22 @@ void GameMain::Update()
 
 void GameMain::Render()
 {
+	switch (SCENEMANEGER->GetScene())
+	{
+	case SN_START:
+
+		break;
+	case SN_HOME:
+		break;
+	case SN_COLLECTION:
+		break;
+	case SN_SHOP:
+		break;
+	case SN_MINIGAME:
+		break;
+	default:
+		break;
+	}
 }
 
 void GameMain::Destroy()

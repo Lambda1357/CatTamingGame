@@ -11,6 +11,9 @@ private:
 	Object background[LAST_SN - 1];
 	Object boxSmall;
 	Object boxFloat;
+
+	Object startButton;
+
 	int curentCatnum;
 	int maxCatCount;
 public:
