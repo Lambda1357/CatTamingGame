@@ -5,6 +5,7 @@
 
 void GameMain::Init()
 {
+	SCENEMANEGER->SetScene(SN_START);
 	//공통 UI 로드
 	boxSmall.Init(TEXT("./resource/UI/boxSmall.bmp"));
 	boxSmall.SetPos(489, 300);
@@ -13,10 +14,17 @@ void GameMain::Init()
 
 	//배경파일 로드
 	background[SN_START].Init(TEXT("./resource/Background/bg_title.bmp"));
+	background[SN_START].SetPos(489, 300);
+	background[SN_START].SetSize(489, 300);
+
 	background[SN_HOME].Init(TEXT("./resource/Background/bg_home.bmp"));
+
 	background[SN_COLLECTION].Init(TEXT("./resource/Background/bg_collection.bmp"));
+
 	background[SN_SHOP].Init(TEXT("./resource/Background/bg_shop.bmp"));
+
 	background[SN_MINIGAME].Init(TEXT("./resource/Background/bg_fishing.bmp"));
+
 
 	RECT rc = { 420,420,420 + 145,420 + 58 };
 	//TODO:startButton.Init(TEXT("이미지경로"));
@@ -61,14 +69,18 @@ void GameMain::Update()
 
 void GameMain::Render()
 {
+	hdc = GetDC(g_Hwnd);
+	backDC = CreateCompatibleDC(hdc);
 	switch (SCENEMANEGER->GetScene())
 	{
 	case SN_START:
-
+		background[SN_START].Render(backDC);
 		break;
 	case SN_HOME:
+		background[SN_HOME].Render(backDC);
 		break;
 	case SN_COLLECTION:
+		background[SN_COLLECTION].Render(backDC);
 		break;
 	case SN_SHOP:
 		break;
@@ -77,6 +89,11 @@ void GameMain::Render()
 	default:
 		break;
 	}
+
+	BitBlt(hdc, 0, 0, 978, 600, backDC, 0, 0, SRCCOPY);
+
+	DeleteDC(backDC);
+	DeleteDC(hdc);
 }
 
 void GameMain::Destroy()
