@@ -1,10 +1,10 @@
 #pragma once
 #define CATSIZE_X 100
-#define CATSIZE_Y 75
+#define CATSIZE_Y 70
 
 extern HWND g_Hwnd;
 
-const RECT CATALLOWBOX = { 100,80,880,480 };
+const RECT CATALLOWBOX = { 100,155,880,480 };
 
 enum CatCode
 {
@@ -36,7 +36,7 @@ enum CatCode
 	CAT_HEROS
 };
 
-class Cat : Object
+class Cat : public Object
 {
 private:
 	CatCode myCatCode;
@@ -50,14 +50,18 @@ private:
 	BOOL xSideUp;
 	BOOL ySideUp;
 
-	TCHAR catName[24];
+	
 public:
 	virtual void Init(TCHAR* imgRoot, CatCode m_catCode);
 	void Update();
 	void Destoy();
 
+	TCHAR catName[24];
 	void AddHunger(int addCnt);
 	void AddLove(int addCnt);
+	inline int Gethunger() { return hungerPoint; };
+	inline int GetLove() { return lovePoint; };
+	inline int GetMaxLove() { return maxlove; };
 
 	Cat();
 	~Cat();

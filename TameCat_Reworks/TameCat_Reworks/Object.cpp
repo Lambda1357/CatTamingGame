@@ -13,18 +13,24 @@ Object::~Object()
 
 void Object::Render(HDC hdc)
 {
-	HDC imgDC = CreateCompatibleDC(hdc);
-	HBITMAP oldBitmap = (HBITMAP)SelectObject(imgDC, myBitmap);
+	imgDC = CreateCompatibleDC(hdc);
+	oldBitmap = (HBITMAP)SelectObject(imgDC, myBitmap);
 
 	TransparentBlt(hdc, posX - sizeX, posY - sizeY, sizeX * 2, sizeY * 2, imgDC, 0, 0, sizeX * 2, sizeY * 2, RGB(255, 0, 255));
 
 	SelectObject(imgDC, oldBitmap);
-	ReleaseDC(g_Hwnd, imgDC);
+	DeleteDC(imgDC);
 }
 
 void Object::Init(TCHAR* imageRoot)
 {
 	myBitmap = (HBITMAP)LoadImage(NULL, imageRoot, IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE | LR_CREATEDIBSECTION);
+	if (myBitmap == NULL)
+	{
+		TCHAR arrmsg[256];
+		wsprintf(arrmsg,TEXT("%s"),imageRoot);
+		MessageBox(g_Hwnd, arrmsg, TEXT("이미지 로드 실패"), MB_OK);
+	}
 }
 
 void Object::SetPos(int posX, int posY)
@@ -52,7 +58,14 @@ RECT Object::GetRect()
 	RECT rect;
 	rect.left = posX - sizeX;
 	rect.top = posY - sizeY;
-	rect.right = sizeX * 2;
-	rect.top = sizeY * 2;
+	rect.right = posX + sizeX;
+	rect.bottom = posY + sizeY;
+
 	return rect;
+}
+
+POINT Object::GetPos()
+{
+	POINT pos = { posX,posY };
+	return pos;
 }

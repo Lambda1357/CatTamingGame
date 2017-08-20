@@ -3,7 +3,7 @@ class InputManeger
 {
 private: 
 	static InputManeger* UniqueObj;
-	int mousePosX, mousePosY;
+	POINT mousepos;
 	BOOL isClick_cur;
 	BOOL isClick_prv;
 
@@ -14,7 +14,10 @@ private:
 	~InputManeger();
 public:
 	static InputManeger* GetUniqueInputMgr();
-	void ClickUpdate(UINT msg, WPARAM wParam, LPARAM lParam);
+	void Init();
+	void Update();
+	void LbuttonDown();
+	void LbuttonUp();
 	BOOL IsHit(Object);
 };
 

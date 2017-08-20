@@ -1,10 +1,14 @@
 // TameCat_Reworks.cpp : 응용 프로그램에 대한 진입점을 정의합니다.
 //
 
+
 #include "stdafx.h"
 #include "TameCat_Reworks.h"
 
 #define MAX_LOADSTRING 100
+
+
+
 
 RECT clientRect = { 0,0,978,600 };
 // 전역 변수:
@@ -25,6 +29,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	_In_ LPWSTR    lpCmdLine,
 	_In_ int       nCmdShow)
 {
+
 	UNREFERENCED_PARAMETER(hPrevInstance);
 	UNREFERENCED_PARAMETER(lpCmdLine);
 
@@ -44,14 +49,19 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_TAMECAT_REWORKS));
 
 	MSG msg = {};
-	while (WM_QUIT != msg.message)
+	while (TRUE)
 	{
-		// 기본 메시지 루프입니다.
 		if (PeekMessage(&msg, NULL, 0, 0, PM_NOREMOVE))
 		{
-			GetMessage(&msg, NULL, 0, 0);
-			TranslateMessage(&msg);
-			DispatchMessage(&msg);
+			if (GetMessage(&msg, NULL, 0, 0))
+			{
+				TranslateMessage(&msg);
+				DispatchMessage(&msg);
+			}
+			else
+			{
+				return (int)msg.wParam;
+			}
 		}
 		else
 		{
@@ -136,8 +146,6 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 //
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
-	
-	INPUTMANEGER->ClickUpdate(message, wParam, lParam);
 	switch (message)
 	{
 	case WM_CREATE:
@@ -146,6 +154,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	break;
 	case WM_DESTROY:
 		PostQuitMessage(0);
+		break;
+	case WM_LBUTTONDOWN:
+		INPUTMANEGER->LbuttonDown();
+		break;
+	case WM_LBUTTONUP:
+		INPUTMANEGER->LbuttonUp();
 		break;
 	default:
 		return DefWindowProc(hWnd, message, wParam, lParam);

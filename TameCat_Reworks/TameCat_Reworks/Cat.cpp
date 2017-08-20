@@ -15,6 +15,7 @@ void Cat::Init(TCHAR * imgRoot, CatCode m_catCode)
 	
 	butlerPoint = 0;
 	hungerPoint = 50;
+	lovePoint = 50;
 	if (THREESTARCUT_CAT < myCatCode) maxlove = 300;
 	else if (TWOSTARCUT_CAT < myCatCode) maxlove = 250;
 	else maxlove = 200;
@@ -82,11 +83,11 @@ void Cat::Update()
 	if (CATALLOWBOX.top >= this->posY) ySideUp = TRUE;
 	else if (CATALLOWBOX.bottom <= this->posY) ySideUp = FALSE;
 
-	if (xSideUp) posX += 3;
-	else posX -= 3;
+	if (xSideUp) posX += 1;
+	else posX -= 1;
 
-	if (ySideUp) posY += 3;
-	else posY -= 3;
+	if (ySideUp) posY += 1;
+	else posY -= 1;
 }
 
 void Cat::Destoy()

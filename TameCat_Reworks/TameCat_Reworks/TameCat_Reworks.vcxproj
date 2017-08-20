@@ -170,6 +170,9 @@
     <Image Include="small.ico" />
     <Image Include="TameCat_Reworks.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="font1.bin" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
