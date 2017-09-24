@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Singletone">
+      <UniqueIdentifier>{216c1630-7568-4bbb-9613-743cf0d0a7b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework">
+      <UniqueIdentifier>{9a4a9d98-cc28-48c7-b9aa-abb8a48a2254}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\ImageManager">
+      <UniqueIdentifier>{c1e050fb-285d-47e6-b045-b76bc16831b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinAPI">
+      <UniqueIdentifier>{26a12928-69fb-422a-b0b6-e2428c530924}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinAPI\WinMain">
+      <UniqueIdentifier>{c31ac782-b8b8-48a4-8cf6-889845dd6d57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common Header">
+      <UniqueIdentifier>{a2af6cb8-002d-4063-a919-fad436c4af80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common Header\Precompiled Header">
+      <UniqueIdentifier>{f8af3bfc-5ae6-484e-a6b5-df0bd5487e6f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="MainProc.cpp" />
+    <ClCompile Include="ImageManager.cpp">
+      <Filter>Framework\ImageManager</Filter>
+    </ClCompile>
+    <ClCompile Include="WinMain.cpp">
+      <Filter>WinAPI\WinMain</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Common Header\Precompiled Header</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MainProc.h" />
+    <ClInclude Include="ImageManager.h">
+      <Filter>Framework\ImageManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Singleton.h">
+      <Filter>Singletone</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Common Header</Filter>
+    </ClInclude>
+    <ClInclude Include="WinMain.h">
+      <Filter>WinAPI\WinMain</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Common Header\Precompiled Header</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpleFunction.h">
+      <Filter>Common Header</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
