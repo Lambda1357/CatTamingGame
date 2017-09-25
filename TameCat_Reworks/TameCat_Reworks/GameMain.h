@@ -41,6 +41,8 @@ private:
 
 	int curentCatnum;
 	int maxCatCount;
+	int gold, hairball;
+
 	BOOL AddCat(TCHAR* imgRoot, CatCode code);
 
 	void GetGoyangDC(HDC hdc);

@@ -7,6 +7,9 @@ void GameMain::Init()
 {
 	srand((unsigned)time(NULL));
 
+	gold = 3000;
+	hairball = 10;
+
 	//ÆùÆ® ·Îµå
 	AddFontResourceEx(TEXT("./resource/font/gothic.ttf"), FR_NOT_ENUM, NULL); //³ª´®°íµñ Light
 	AddFontResourceEx(TEXT("./resource/font/goyang.ttf"), FR_NOT_ENUM, NULL); //°í¾çÃ¼
@@ -22,6 +25,14 @@ void GameMain::Init()
 	boxFloat.Init(TEXT("./resource/UI/boxfloat.bmp"));
 	boxFloat.SetPos(489, 300);
 	boxFloat.SetSize(350, 150);
+
+	boxMoney.Init(TEXT("./resource/UI/boxMoney.bmp"));
+	RECT money = { 69,30,219,90 };
+	boxMoney.SetPos(money);
+
+	boxhairball.Init(TEXT("./resource/UI/boxhairball.bmp"));
+	RECT hair = { 249,30,399,90 };
+	boxhairball.SetPos(hair);
 
 	closeButton.Init(TEXT("./resource/UI/closeButton.bmp"));
 	closeButton.SetSize(17, 17);
@@ -44,7 +55,7 @@ void GameMain::Init()
 	background[SN_SHOP].Init(TEXT("./resource/Background/bg_shop.bmp"));
 	background[SN_SHOP].SetPos(489, 300);
 	background[SN_SHOP].SetSize(489, 300);
-/*  
+/*
 	background[SN_MINIGAME].Init(TEXT("./resource/Background/bg_fishing.bmp"));
 	background[SN_MINIGAME].SetPos(489, 300);
 	background[SN_MINIGAME].SetSize(489, 300);
@@ -119,6 +130,8 @@ void GameMain::Update()
 void GameMain::Render()
 {
 	TCHAR boxSmallMsg[256];
+	TCHAR moneyTmp[24];
+	TCHAR hairballTmp[24];
 	hdc = GetDC(g_Hwnd);
 	backDC = CreateCompatibleDC(hdc);
 	backBit = CreateCompatibleBitmap(hdc, 978, 600);
@@ -145,6 +158,18 @@ void GameMain::Render()
 			if (catlist[i] != NULL)
 				catlist[i]->Render(backDC);
 		}
+		GetGoyangDC(backDC);
+		sizegoyang = 40;
+		wsprintf(moneyTmp, TEXT("Gold: %3d"), gold);
+		DrawText(goyangDC, moneyTmp, -1, &(boxMoney.GetRect()), DT_CENTER);
+		wsprintf(hairballTmp, TEXT("ÅĞ¹¶Ä¡: %3d"), hairball);
+		DrawText(goyangDC, hairballTmp, -1, &(boxhairball.GetRect()), DT_CENTER);
+		ReleaseGoyangDC();
+		sizegoyang = 20;
+
+		BitBlt(backDC, boxMoney.GetRect().left, boxMoney.GetRect().top, boxMoney.GetSize().x*2 , boxMoney.GetSize().y*2, goyangDC, boxMoney.GetRect().left, boxMoney.GetRect().top, SRCAND);
+		boxMoney.Render(backDC);
+		boxhairball.Render(backDC);
 		switch (SCENEMANEGER->GetStatus())
 		{
 		case 0:

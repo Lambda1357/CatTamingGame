@@ -27,6 +27,7 @@
   <ItemGroup>
     <ClInclude Include="ImageManager.h" />
     <ClInclude Include="MainProc.h" />
+    <ClInclude Include="SceneManager.h" />
     <ClInclude Include="SimpleFunction.h" />
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="stdafx.h" />

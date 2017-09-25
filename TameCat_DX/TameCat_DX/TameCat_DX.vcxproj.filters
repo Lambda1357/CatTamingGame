@@ -22,6 +22,9 @@
     <Filter Include="Common Header\Precompiled Header">
       <UniqueIdentifier>{f8af3bfc-5ae6-484e-a6b5-df0bd5487e6f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Framework\SceneManager">
+      <UniqueIdentifier>{e4ca156c-cfc3-435f-a3ca-c57df4e43280}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MainProc.cpp" />
@@ -54,6 +57,9 @@
     </ClInclude>
     <ClInclude Include="SimpleFunction.h">
       <Filter>Common Header</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>Framework\SceneManager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
