@@ -1,9 +1,12 @@
 #pragma once
-#include"Singleton.h"
+
+#include "Singleton.h"
+#include "ImageManager.h"
 
 class Scene
 {
 private:
+	texture backGround;
 
 public:
 	virtual void Init();
@@ -12,11 +15,11 @@ public:
 	virtual void Destroy();
 };
 
-class SceneManager : Singleton <SceneManager>
+class SceneManager : public Singleton <SceneManager>
 {
 private:
-
+	Scene* CurScene;
 public:
 };
 
-#define SCENEMANAGER SceneManager
+#define SCENEMANAGER SceneManager::GetSingleton()

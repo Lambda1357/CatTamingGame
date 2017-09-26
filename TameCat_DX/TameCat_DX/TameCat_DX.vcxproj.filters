@@ -25,6 +25,9 @@
     <Filter Include="Framework\SceneManager">
       <UniqueIdentifier>{e4ca156c-cfc3-435f-a3ca-c57df4e43280}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Scenes">
+      <UniqueIdentifier>{a18c7888-7342-42b5-89e1-0fbf560fccc1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MainProc.cpp" />
@@ -60,6 +63,9 @@
     </ClInclude>
     <ClInclude Include="SceneManager.h">
       <Filter>Framework\SceneManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Scenes.h">
+      <Filter>Scenes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
