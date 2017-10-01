@@ -1,7 +1,15 @@
 #pragma once
 
+#include "stdafx.h"
 #include "Singleton.h"
 #include "ImageManager.h"
+
+enum SceneNumber
+{
+	SN_STARTSCREEN,
+	SN_CATHOME,
+	LAST_SCENENUMBER
+};
 
 class Scene
 {
@@ -18,8 +26,13 @@ public:
 class SceneManager : public Singleton <SceneManager>
 {
 private:
-	Scene* CurScene;
+	Scene* curScene;
+	Scene sceneList[LAST_SCENENUMBER];
 public:
+	void Init();
+	void Update();
+	void Render();
+	void Destroy();
 };
 
 #define SCENEMANAGER SceneManager::GetSingleton()

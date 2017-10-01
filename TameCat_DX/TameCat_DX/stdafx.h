@@ -18,6 +18,10 @@
 #pragma comment(lib, "winmm.lib")
 #pragma comment(lib, "msimg32.lib")
 
+//C++
+#include <iostream>
+#include <vector>
+
 // DirectX9
 #include <d3d9.h>
 #include <d3dx9.h>
