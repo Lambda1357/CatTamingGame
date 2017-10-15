@@ -32,6 +32,7 @@
 // Custom
 #include "SimpleFunction.h"
 #include "ImageManager.h"
+#include "SceneManager.h"
 
 #include "MainProc.h"
 #include "WinMain.h"

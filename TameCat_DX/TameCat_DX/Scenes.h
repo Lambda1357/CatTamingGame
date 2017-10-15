@@ -1,7 +1,6 @@
 #pragma once
 
-#include "SceneManager.h"
-
+#include "stdafx.h"
 class StartScene : Scene
 {
 private:
@@ -10,4 +9,18 @@ private:
 		DEFAULT,
 		HOWTO
 	};
+	enum BackgroundTheme
+	{
+		HOUSE,
+		FOREST,
+		PARK,
+		AMUSEMENT,
+		HALLOWEEN,
+		SCHOOL
+	};
+
+	SceneState currentState;
+	BackgroundTheme currentTheme;
+public:
+
 };

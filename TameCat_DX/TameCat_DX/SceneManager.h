@@ -2,7 +2,7 @@
 
 #include "stdafx.h"
 #include "Singleton.h"
-#include "ImageManager.h"
+
 
 enum SceneNumber
 {
@@ -13,7 +13,7 @@ enum SceneNumber
 
 class Scene
 {
-private:
+protected:
 	texture backGround;
 
 public:
