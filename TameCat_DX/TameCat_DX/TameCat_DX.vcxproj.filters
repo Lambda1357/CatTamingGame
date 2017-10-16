@@ -28,6 +28,12 @@
     <Filter Include="Scenes">
       <UniqueIdentifier>{a18c7888-7342-42b5-89e1-0fbf560fccc1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Framework\DataManager">
+      <UniqueIdentifier>{2ae02105-6f0e-4c36-b0d6-c9428305dd07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Data Tamplate">
+      <UniqueIdentifier>{de0b0d67-f510-4cff-a42c-db6bb2e29434}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MainProc.cpp" />
@@ -40,6 +46,7 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Common Header\Precompiled Header</Filter>
     </ClCompile>
+    <ClCompile Include="Scenes.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainProc.h" />
@@ -66,6 +73,12 @@
     </ClInclude>
     <ClInclude Include="Scenes.h">
       <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="DataManager.h">
+      <Filter>Framework\DataManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>Framework\Data Tamplate</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

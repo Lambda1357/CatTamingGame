@@ -9,18 +9,11 @@ private:
 		DEFAULT,
 		HOWTO
 	};
-	enum BackgroundTheme
-	{
-		HOUSE,
-		FOREST,
-		PARK,
-		AMUSEMENT,
-		HALLOWEEN,
-		SCHOOL
-	};
 
 	SceneState currentState;
-	BackgroundTheme currentTheme;
 public:
-
+	void Init();
+	void Update();
+	void Render();
+	void Destroy();
 };
