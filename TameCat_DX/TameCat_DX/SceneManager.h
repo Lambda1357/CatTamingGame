@@ -17,10 +17,10 @@ protected:
 	texture backGround;
 
 public:
-	virtual void Init();
-	virtual void Update();
-	virtual void Render();
-	virtual void Destroy();
+	virtual void Init() {};
+	virtual void Update() {};
+	virtual void Render() {};
+	virtual void Destroy() {};
 };
 
 class SceneManager : public Singleton <SceneManager>

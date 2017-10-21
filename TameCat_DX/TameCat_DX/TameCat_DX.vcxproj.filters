@@ -34,6 +34,12 @@
     <Filter Include="Framework\Data Tamplate">
       <UniqueIdentifier>{de0b0d67-f510-4cff-a42c-db6bb2e29434}</UniqueIdentifier>
     </Filter>
+    <Filter Include="UI">
+      <UniqueIdentifier>{5bcd42cb-e6ba-4fd0-8d65-c00e06689fc1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Cat">
+      <UniqueIdentifier>{1c0eb1c8-746a-4b77-88e1-92ac6557aa8b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MainProc.cpp" />
@@ -78,6 +84,15 @@
       <Filter>Framework\DataManager</Filter>
     </ClInclude>
     <ClInclude Include="Item.h">
+      <Filter>Framework\Data Tamplate</Filter>
+    </ClInclude>
+    <ClInclude Include="UI.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Cat.h">
+      <Filter>Framework\Data Tamplate</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
       <Filter>Framework\Data Tamplate</Filter>
     </ClInclude>
   </ItemGroup>
