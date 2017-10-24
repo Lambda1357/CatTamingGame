@@ -40,6 +40,9 @@
     <Filter Include="Cat">
       <UniqueIdentifier>{1c0eb1c8-746a-4b77-88e1-92ac6557aa8b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Framework\InputManager">
+      <UniqueIdentifier>{0a0e3fd2-449c-4e15-b189-cf0b31cea2e1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MainProc.cpp" />
@@ -52,7 +55,12 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Common Header\Precompiled Header</Filter>
     </ClCompile>
-    <ClCompile Include="Scenes.cpp" />
+    <ClCompile Include="Scenes.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Framework\InputManager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainProc.h" />
@@ -94,6 +102,9 @@
     </ClInclude>
     <ClInclude Include="Object.h">
       <Filter>Framework\Data Tamplate</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>Framework\InputManager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
