@@ -1,7 +1,10 @@
 #pragma once
-#include "Singleton.h"
+#include "stdafx.h"
 
+class Cat
+{
 
+};
 
 class DataManager : public Singleton <DataManager>
 {
