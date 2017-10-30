@@ -7,7 +7,7 @@ class Button
 {
 	class ButtonBehavior;
 	friend class ButtonBehavior;
-private:
+protected:
 	POINT myPos;
 	texture box;
 	class ButtonBehavior
@@ -25,10 +25,10 @@ public:
 
 class Window
 {
-private:
+protected:
 	texture box;
 	POINT myPos;
-
+	
 public:
 	virtual void Init();
 	virtual void Update();
@@ -38,13 +38,22 @@ public:
 };
 
 //UI 구현
+class InventoryWindow : public Window
+{
+	
+};
+
+class InventoryButton : public Button
+{
+	
+};
 
 
 //독립적으로 사용되는 UI
 
 class SmallCashBar
 {
-private:
+protected:
 	int parameter;
 	texture box;
 	POINT myPos;
