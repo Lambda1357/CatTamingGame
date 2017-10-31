@@ -10,10 +10,11 @@ public:
 	void Destroy();
 	enum SceneState
 	{
-		DEFAULT,
-		HOWTO
+		START
 	};
 private:
 	SceneState currentState;
+	Window HowToPlay;
+	std::vector<Button> ButtonList;
 
 };
