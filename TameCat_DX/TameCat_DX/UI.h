@@ -1,7 +1,7 @@
 #pragma once
 #include "stdafx.h"
 
-//UI 틀
+//틀 정의
 
 class Button
 {
@@ -39,34 +39,39 @@ public:
 
 };
 
-//UI 구현
-// 버튼
+//구현 정의
+
 class SceneChangeButton : public Button
 {
 private:
-	SceneNumber Parameter; //버튼을 눌렀을 때 이동할 씬
+	SceneNumber parameter; //버튼을 눌렀을 때 이동할 씬
+	SceneChangeButton();
+	class SceneChangeBehavior : public ButtonBehavior
+	{
+	private:
+		SceneChangeButton* perent;
+	public:
+		inline SceneChangeBehavior(SceneChangeButton &p) { perent = &p; }
+		inline SceneChangeBehavior(SceneChangeButton* p) { perent = p; }
+		void OnCilck();
+	};
+	friend class SceneChangeBehavior;
+
 public:
-	inline SceneChangeButton(SceneNumber sn) { Parameter = sn; }
+	inline SceneChangeButton(SceneNumber sn) { parameter = sn; }
 	void Init();
 	void Update();
 	void Render();
 	void Destroy();
 };
 
-
-// 윈도우
-class InventoryWindow : public Window
-{
-	
-};
-
-class InventoryButton : public Button
+class HowtoButton : public Button
 {
 	
 };
 
 
-//독립적으로 사용되는 UI
+//	독립적으로 사용되는 UI
 
 class SmallCashBar
 {

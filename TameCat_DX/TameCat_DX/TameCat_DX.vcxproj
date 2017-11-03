@@ -24,6 +24,7 @@
     <ClCompile Include="MainProc.cpp" />
     <ClCompile Include="Scenes.cpp" />
     <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="UI.cpp" />
     <ClCompile Include="WinMain.cpp" />
   </ItemGroup>
   <ItemGroup>
