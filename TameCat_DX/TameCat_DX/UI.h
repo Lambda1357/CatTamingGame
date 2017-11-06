@@ -16,7 +16,6 @@ protected:
 
 	POINT myPos;
 	texture box;
-	ButtonBehavior* myButton;
 	
 public:
 	void Init();
@@ -30,7 +29,8 @@ class Window
 protected:
 	texture box;
 	POINT myPos;
-	
+	void ImageInit(char* addr);
+
 public:
 	virtual void Init();
 	virtual void Update();
@@ -65,9 +65,28 @@ public:
 	void Destroy();
 };
 
+class HowToWindow : public Window
+{
+private:
+	std::string description;
+
+public:
+	void Init();
+	void Update();
+	void Render();
+	void Destroy();
+
+};
+
 class HowtoButton : public Button
 {
+private:
 	
+public:
+	void Init();
+	void Update();
+	void Render();
+	void Destroy();
 };
 
 

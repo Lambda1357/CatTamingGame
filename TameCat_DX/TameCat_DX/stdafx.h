@@ -21,6 +21,7 @@
 //C++
 #include <iostream>
 #include <vector>
+#include <string>
 
 // DirectX9
 #include <d3d9.h>
