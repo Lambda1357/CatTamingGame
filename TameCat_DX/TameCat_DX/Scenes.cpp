@@ -3,7 +3,7 @@
 
 void StartScene::Init()
 {
-	currentState = DEFAULT;
+
 }
 
 void StartScene::Update()
