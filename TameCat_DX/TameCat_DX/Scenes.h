@@ -1,20 +1,5 @@
 #pragma once
 
-#include "stdafx.h"
-class StartScene : Scene
-{
-public:
-	void Init();
-	void Update();
-	void Render();
-	void Destroy();
-	enum SceneState
-	{
-		START
-	};
-private:
-	SceneState currentState;
-	Window HowToPlay;
-	std::vector<Button> ButtonList;
+//각 Scene의 헤더를 한번에 참조하는 헤더
 
-};
+#include "StartScene.h"

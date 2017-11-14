@@ -43,6 +43,12 @@
     <Filter Include="Framework\InputManager">
       <UniqueIdentifier>{0a0e3fd2-449c-4e15-b189-cf0b31cea2e1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Scenes\SceneHeader">
+      <UniqueIdentifier>{4d22c381-931d-4f9a-ab6d-9e81bc997628}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scenes\StartScene">
+      <UniqueIdentifier>{f49af2e0-ecc4-478d-aba0-dfc7bb99ecb4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MainProc.cpp" />
@@ -55,15 +61,18 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Common Header\Precompiled Header</Filter>
     </ClCompile>
-    <ClCompile Include="Scenes.cpp">
-      <Filter>Scenes</Filter>
-    </ClCompile>
     <ClCompile Include="InputManager.cpp">
       <Filter>Framework\InputManager</Filter>
     </ClCompile>
     <ClCompile Include="UI.cpp" />
     <ClCompile Include="SceneManager.cpp">
       <Filter>Framework\SceneManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Scenes.cpp">
+      <Filter>Scenes\SceneHeader</Filter>
+    </ClCompile>
+    <ClCompile Include="StartScene.cpp">
+      <Filter>Scenes\StartScene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -89,9 +98,6 @@
     <ClInclude Include="SceneManager.h">
       <Filter>Framework\SceneManager</Filter>
     </ClInclude>
-    <ClInclude Include="Scenes.h">
-      <Filter>Scenes</Filter>
-    </ClInclude>
     <ClInclude Include="DataManager.h">
       <Filter>Framework\DataManager</Filter>
     </ClInclude>
@@ -109,6 +115,12 @@
     </ClInclude>
     <ClInclude Include="InputManager.h">
       <Filter>Framework\InputManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Scenes.h">
+      <Filter>Scenes\SceneHeader</Filter>
+    </ClInclude>
+    <ClInclude Include="StartScene.h">
+      <Filter>Scenes\StartScene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

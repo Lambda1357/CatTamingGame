@@ -9,6 +9,7 @@ void SceneManager::Init()
 		switch (index)
 		{
 		case SN_STARTSCREEN:
+			sceneList[SN_STARTSCREEN] = new StartScene;
 			break;
 		case SN_CATHOME:
 			break;
