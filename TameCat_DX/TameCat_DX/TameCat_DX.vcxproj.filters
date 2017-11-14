@@ -62,6 +62,9 @@
       <Filter>Framework\InputManager</Filter>
     </ClCompile>
     <ClCompile Include="UI.cpp" />
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>Framework\SceneManager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainProc.h" />
