@@ -122,5 +122,8 @@
     <ClInclude Include="StartScene.h">
       <Filter>Scenes\StartScene</Filter>
     </ClInclude>
+    <ClInclude Include="Textbox.h">
+      <Filter>UI</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
