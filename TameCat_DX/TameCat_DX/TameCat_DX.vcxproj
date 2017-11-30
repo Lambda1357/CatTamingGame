@@ -52,7 +52,7 @@
     <ProjectGuid>{7B1CDC07-CD35-4B3C-93F1-67FE4B1654B9}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>TameCat_DX</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.14393.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
