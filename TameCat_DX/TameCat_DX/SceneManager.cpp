@@ -4,7 +4,7 @@
 void SceneManager::Init()
 {
 	//씬 전체를 초기화하는 과정
-	for (SceneNumber index = START_SCENENUMBER; index < LAST_SCENENUMBER; index++)
+	for (int index = START_SCENENUMBER; index < LAST_SCENENUMBER; index++)
 	{
 		switch (index)
 		{

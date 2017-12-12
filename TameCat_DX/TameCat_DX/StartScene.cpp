@@ -7,9 +7,9 @@ void StartScene::Init()
 	howtoPlay = NULL;
 	buttonList.push_back(new SceneChangeButton(SN_CATHOME));
 	buttonList.push_back(new HowtoButton);
-	for (auto iter = buttonList.begin; iter != buttonList.end; iter++)
+	for (auto iter = buttonList.begin(); iter != buttonList.end(); iter++)
 	{
-		*iter->Init();
+		(*iter)->Init();
 	}
 }
 
