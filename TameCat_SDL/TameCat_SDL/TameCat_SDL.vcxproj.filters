@@ -1,35 +1,131 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
-    <ClInclude Include="Behaviors.h" />
-    <ClInclude Include="Button.h" />
-    <ClInclude Include="CutScene.h" />
-    <ClInclude Include="EventHandler.h" />
-    <ClInclude Include="MainProc.h" />
-    <ClInclude Include="MouseInput.h" />
-    <ClInclude Include="Object.h" />
-    <ClInclude Include="Scene.h" />
-    <ClInclude Include="SceneChangeBehavior.h" />
-    <ClInclude Include="SceneManager.h" />
-    <ClInclude Include="SceneNumber.h" />
-    <ClInclude Include="Singletone.h" />
-    <ClInclude Include="StartScene.h" />
+    <ClInclude Include="MainProc.h">
+      <Filter>MainProc</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header\Precompiled header</Filter>
+    </ClInclude>
+    <ClInclude Include="EventHandler.h">
+      <Filter>Framework\EventHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="MouseInput.h">
+      <Filter>Framework\MouseInput</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>Framework\SceneManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>Object\Button</Filter>
+    </ClInclude>
+    <ClInclude Include="Behaviors.h">
+      <Filter>Object\Button\Behaviors</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneChangeBehavior.h">
+      <Filter>Object\Button\Behaviors\SceneChangeBehavior</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="StartScene.h">
+      <Filter>Scene\StartScene</Filter>
+    </ClInclude>
+    <ClInclude Include="CutScene.h">
+      <Filter>Scene\CutScene</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneNumber.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Singletone.h">
+      <Filter>Template</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="stdafx.cpp" />
-    <ClCompile Include="TameCat_SDL.cpp" />
-    <ClCompile Include="Button.cpp" />
-    <ClCompile Include="CutScene.cpp" />
-    <ClCompile Include="EventHandler.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="MainProc.cpp" />
-    <ClCompile Include="MouseInput.cpp" />
-    <ClCompile Include="Object.cpp" />
-    <ClCompile Include="Scene.cpp" />
-    <ClCompile Include="SceneChangeBehavior.cpp" />
-    <ClCompile Include="SceneManager.cpp" />
-    <ClCompile Include="StartScene.cpp" />
+    <ClCompile Include="MainProc.cpp">
+      <Filter>MainProc</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Header\Precompiled header</Filter>
+    </ClCompile>
+    <ClCompile Include="EventHandler.cpp">
+      <Filter>Framework\EventHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="MouseInput.cpp">
+      <Filter>Framework\MouseInput</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>Framework\SceneManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>Object\Button</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneChangeBehavior.cpp">
+      <Filter>Object\Button\Behaviors\SceneChangeBehavior</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="StartScene.cpp">
+      <Filter>Scene\StartScene</Filter>
+    </ClCompile>
+    <ClCompile Include="CutScene.cpp">
+      <Filter>Scene\CutScene</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="MainProc">
+      <UniqueIdentifier>{e73665bf-8a1f-4ac6-aa8a-694c5478ad29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header">
+      <UniqueIdentifier>{6bd1cf34-aa04-4727-bca4-c32995b5e303}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header\Precompiled header">
+      <UniqueIdentifier>{391c7b9e-87d3-4aea-ae3a-fd3087642371}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework">
+      <UniqueIdentifier>{22c99b6b-941e-438f-b2f1-afbf3e3bbfe4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\EventHandler">
+      <UniqueIdentifier>{5968ad00-ace1-48ce-8dfb-1b6c79785d06}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\MouseInput">
+      <UniqueIdentifier>{0d715c08-e90a-4f1e-ab09-59f8afc5befc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\SceneManager">
+      <UniqueIdentifier>{3c0b2287-2b3f-4a05-84f5-b06c6e5a167a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object">
+      <UniqueIdentifier>{e729871f-2b29-4ec5-bcaf-4c408ae98971}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Button">
+      <UniqueIdentifier>{bf343ca8-e165-4546-a087-3794480d86e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Button\Behaviors">
+      <UniqueIdentifier>{18e0ddd2-d83e-4edd-8b7c-8593ac1a3061}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Button\Behaviors\SceneChangeBehavior">
+      <UniqueIdentifier>{37cd40c8-b1b6-4ad7-b16f-e6318e6393eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene">
+      <UniqueIdentifier>{66815a2c-f975-446f-bd36-9b894ad378a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\StartScene">
+      <UniqueIdentifier>{eb33474f-decb-44b6-96ef-d34d89eb7fae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\CutScene">
+      <UniqueIdentifier>{efc5dc2c-9ded-4aa3-a680-e99f4de646eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Template">
+      <UniqueIdentifier>{45be553f-38c9-4704-8b5a-fabb13ed69e1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

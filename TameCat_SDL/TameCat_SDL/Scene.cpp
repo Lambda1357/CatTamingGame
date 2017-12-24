@@ -3,7 +3,8 @@
 
 void Scene::BackgroundInit(char* imgAdr)
 {
-	background = SDL_LoadBMP(imgAdr);
+	if (!(background = SDL_LoadBMP(imgAdr)))
+		printf("%s Load Failed! please chack file address\n",imgAdr);
 }
 
 void Scene::BackgroundFree()
