@@ -46,11 +46,11 @@ private:
 	int hungerPoint;
 	int lovePoint;
 	int maxlove;
+	short curFrameNum;
 
-	BOOL xSideUp;
-	BOOL ySideUp;
+	BOOL isAddingX;
+	BOOL isAddingY;
 
-	
 public:
 	virtual void Init(TCHAR* imgRoot, CatCode m_catCode);
 	void Update();

@@ -20,8 +20,9 @@ void Cat::Init(TCHAR * imgRoot, CatCode m_catCode)
 	else if (TWOSTARCUT_CAT < myCatCode) maxlove = 250;
 	else maxlove = 200;
 
-	xSideUp = rand() % 1;
-	ySideUp = rand() % 1;
+	isAddingX = rand() % 1;
+	isAddingY = rand() % 1;
+	curFrameNum = rand() % 3;
 	switch (myCatCode)
 	{
 	case CAT_TAKEALOOK:
@@ -77,16 +78,16 @@ void Cat::Init(TCHAR * imgRoot, CatCode m_catCode)
 
 void Cat::Update()
 {
-	if (CATALLOWBOX.left >= this->posX) xSideUp = TRUE;
-	else if (CATALLOWBOX.right <= this->posX) xSideUp = FALSE;
+	if (CATALLOWBOX.left >= this->posX) isAddingX = TRUE;
+	else if (CATALLOWBOX.right <= this->posX) isAddingX = FALSE;
 
-	if (CATALLOWBOX.top >= this->posY) ySideUp = TRUE;
-	else if (CATALLOWBOX.bottom <= this->posY) ySideUp = FALSE;
+	if (CATALLOWBOX.top >= this->posY) isAddingY = TRUE;
+	else if (CATALLOWBOX.bottom <= this->posY) isAddingY = FALSE;
 
-	if (xSideUp) posX += 1;
+	if (isAddingX) posX += 1;
 	else posX -= 1;
 
-	if (ySideUp) posY += 1;
+	if (isAddingY) posY += 1;
 	else posY -= 1;
 }
 
