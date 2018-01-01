@@ -47,6 +47,7 @@ private:
 	int lovePoint;
 	int maxlove;
 	short curFrameNum;
+	int animatingSpeed;
 
 	BOOL isAddingX;
 	BOOL isAddingY;
@@ -54,6 +55,7 @@ private:
 public:
 	virtual void Init(TCHAR* imgRoot, CatCode m_catCode);
 	void Update();
+	void Render(HDC hdc);
 	void Destoy();
 
 	TCHAR catName[24];

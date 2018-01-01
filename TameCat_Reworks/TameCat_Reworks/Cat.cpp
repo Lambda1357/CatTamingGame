@@ -2,17 +2,17 @@
 #include "Cat.h"
 
 
-void Cat::Init(TCHAR * imgRoot, CatCode m_catCode)
+void Cat::Init(TCHAR* imgRoot, CatCode m_catCode)
 {
 	Object::Init(imgRoot);
 	int randPositX = rand() % (CATALLOWBOX.right - CATALLOWBOX.left) + CATALLOWBOX.left;
 	int randPositY = rand() % (CATALLOWBOX.bottom - CATALLOWBOX.top) + CATALLOWBOX.top;
 	RECT catPosit = { randPositX,randPositY,randPositX + CATSIZE_X,randPositY + CATSIZE_Y };
-	
+
 	SetPos(catPosit);
 
 	myCatCode = m_catCode;
-	
+
 	butlerPoint = 0;
 	hungerPoint = 50;
 	lovePoint = 50;
@@ -22,7 +22,10 @@ void Cat::Init(TCHAR * imgRoot, CatCode m_catCode)
 
 	isAddingX = rand() % 1;
 	isAddingY = rand() % 1;
-	curFrameNum = rand() % 3;
+	curFrameNum = (rand() % 2) == 0 ? 0 : 2;
+
+	animatingSpeed = 45;
+
 	switch (myCatCode)
 	{
 	case CAT_TAKEALOOK:
@@ -78,6 +81,8 @@ void Cat::Init(TCHAR * imgRoot, CatCode m_catCode)
 
 void Cat::Update()
 {
+	static int updateCounter = 1;
+
 	if (CATALLOWBOX.left >= this->posX) isAddingX = TRUE;
 	else if (CATALLOWBOX.right <= this->posX) isAddingX = FALSE;
 
@@ -89,6 +94,30 @@ void Cat::Update()
 
 	if (isAddingY) posY += 1;
 	else posY -= 1;
+
+	if (updateCounter>animatingSpeed)
+	{
+		switch (curFrameNum)
+		{
+		case 2: curFrameNum = 0; break;
+		case 0: curFrameNum = 2; break;
+		default: curFrameNum = 0; break;
+		}
+		updateCounter = 0;
+	}
+
+	updateCounter++;
+}
+
+void Cat::Render(HDC hdc)
+{
+	imgDC = CreateCompatibleDC(hdc);
+	oldBitmap = (HBITMAP)SelectObject(imgDC, myBitmap);
+
+	TransparentBlt(hdc, posX - sizeX, posY - sizeY, sizeX * 2, sizeY * 2, imgDC, (sizeX * 2) * curFrameNum, 0, sizeX * 2, sizeY * 2, RGB(255, 0, 255));
+
+	SelectObject(imgDC, oldBitmap);
+	DeleteDC(imgDC);
 }
 
 void Cat::Destoy()

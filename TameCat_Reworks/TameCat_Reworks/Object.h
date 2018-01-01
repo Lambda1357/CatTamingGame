@@ -18,7 +18,7 @@ public:
 	POINT GetPos();
 	Object();
 	~Object();
-	void Render(HDC hdc);
+	virtual void Render(HDC hdc);
 	inline POINT GetSize() { POINT pt = { sizeX,sizeY }; return pt; };
 };
 
