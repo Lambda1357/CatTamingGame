@@ -40,6 +40,7 @@ class Cat : public Object
 {
 private:
 	CatCode myCatCode;
+	HBITMAP reverseImg;
 
 	int rareStar;
 	int butlerPoint;
@@ -48,6 +49,7 @@ private:
 	int maxlove;
 	short curFrameNum;
 	int animatingSpeed;
+	int updateCounter;
 
 	BOOL isAddingX;
 	BOOL isAddingY;

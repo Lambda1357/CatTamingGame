@@ -4,7 +4,15 @@
 
 void Cat::Init(TCHAR* imgRoot, CatCode m_catCode)
 {
+
 	Object::Init(imgRoot);
+	TCHAR tmp[256] = { 0 };
+	TCHAR add[8] = TEXT("2.bmp");
+	_tcsncpy(tmp, imgRoot, _tcslen(imgRoot) - 4);
+	TCHAR* tmp2 = _tcscat(tmp, add);
+
+	reverseImg = (HBITMAP)LoadImage(NULL, tmp2, IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE | LR_CREATEDIBSECTION);
+
 	int randPositX = rand() % (CATALLOWBOX.right - CATALLOWBOX.left) + CATALLOWBOX.left;
 	int randPositY = rand() % (CATALLOWBOX.bottom - CATALLOWBOX.top) + CATALLOWBOX.top;
 	RECT catPosit = { randPositX,randPositY,randPositX + CATSIZE_X,randPositY + CATSIZE_Y };
@@ -25,6 +33,7 @@ void Cat::Init(TCHAR* imgRoot, CatCode m_catCode)
 	curFrameNum = (rand() % 2) == 0 ? 0 : 2;
 
 	animatingSpeed = 45;
+	updateCounter = rand() % 30;
 
 	switch (myCatCode)
 	{
@@ -81,8 +90,6 @@ void Cat::Init(TCHAR* imgRoot, CatCode m_catCode)
 
 void Cat::Update()
 {
-	static int updateCounter = 1;
-
 	if (CATALLOWBOX.left >= this->posX) isAddingX = TRUE;
 	else if (CATALLOWBOX.right <= this->posX) isAddingX = FALSE;
 
@@ -95,7 +102,7 @@ void Cat::Update()
 	if (isAddingY) posY += 1;
 	else posY -= 1;
 
-	if (updateCounter>animatingSpeed)
+	if (updateCounter > animatingSpeed)
 	{
 		switch (curFrameNum)
 		{
@@ -112,9 +119,18 @@ void Cat::Update()
 void Cat::Render(HDC hdc)
 {
 	imgDC = CreateCompatibleDC(hdc);
-	oldBitmap = (HBITMAP)SelectObject(imgDC, myBitmap);
+	if (!isAddingX) {
+		oldBitmap = (HBITMAP)SelectObject(imgDC, myBitmap);
+		TransparentBlt(hdc, posX - sizeX, posY - sizeY, sizeX * 2, sizeY * 2, 
+			imgDC, (sizeX * 2) * curFrameNum, 0, sizeX * 2, sizeY * 2, RGB(255, 0, 255));
+	}
+	else
+	{
+		oldBitmap = (HBITMAP)SelectObject(imgDC, reverseImg);
+		TransparentBlt(hdc, posX - sizeX, posY - sizeY, sizeX * 2, sizeY * 2, 
+			imgDC, (300-CATSIZE_X)-((sizeX * 2) * curFrameNum), 0, sizeX * 2, sizeY * 2, RGB(255, 0, 255));
+	}
 
-	TransparentBlt(hdc, posX - sizeX, posY - sizeY, sizeX * 2, sizeY * 2, imgDC, (sizeX * 2) * curFrameNum, 0, sizeX * 2, sizeY * 2, RGB(255, 0, 255));
 
 	SelectObject(imgDC, oldBitmap);
 	DeleteDC(imgDC);
@@ -122,6 +138,7 @@ void Cat::Render(HDC hdc)
 
 void Cat::Destoy()
 {
+	DeleteObject(reverseImg);
 	DeleteObject(myBitmap);
 }
 
