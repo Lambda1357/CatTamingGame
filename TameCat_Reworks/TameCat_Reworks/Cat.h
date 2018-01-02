@@ -53,6 +53,9 @@ private:
 
 	BOOL isAddingX;
 	BOOL isAddingY;
+	BOOL isMoving;
+
+	int movingChkDelay;
 
 public:
 	virtual void Init(TCHAR* imgRoot, CatCode m_catCode);

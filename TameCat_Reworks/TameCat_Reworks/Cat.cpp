@@ -30,6 +30,8 @@ void Cat::Init(TCHAR* imgRoot, CatCode m_catCode)
 
 	isAddingX = rand() % 1;
 	isAddingY = rand() % 1;
+	isMoving = TRUE;
+	movingChkDelay = 0;
 	curFrameNum = (rand() % 2) == 0 ? 0 : 2;
 
 	animatingSpeed = 45;
@@ -90,30 +92,46 @@ void Cat::Init(TCHAR* imgRoot, CatCode m_catCode)
 
 void Cat::Update()
 {
-	if (CATALLOWBOX.left >= this->posX) isAddingX = TRUE;
-	else if (CATALLOWBOX.right <= this->posX) isAddingX = FALSE;
-
-	if (CATALLOWBOX.top >= this->posY) isAddingY = TRUE;
-	else if (CATALLOWBOX.bottom <= this->posY) isAddingY = FALSE;
-
-	if (isAddingX) posX += 1;
-	else posX -= 1;
-
-	if (isAddingY) posY += 1;
-	else posY -= 1;
-
-	if (updateCounter > animatingSpeed)
+	if (isMoving)
 	{
-		switch (curFrameNum)
+		//고양이 가두기
+		if (CATALLOWBOX.left >= this->posX) isAddingX = TRUE;
+		else if (CATALLOWBOX.right <= this->posX) isAddingX = FALSE;
+
+		if (CATALLOWBOX.top >= this->posY) isAddingY = TRUE;
+		else if (CATALLOWBOX.bottom <= this->posY) isAddingY = FALSE;
+
+		//고양이 이동
+		if (isAddingX) posX += 1;
+		else posX -= 1;
+
+		if (isAddingY) posY += 1;
+		else posY -= 1;
+
+		//애니메이션
+		if (updateCounter > animatingSpeed)
 		{
-		case 2: curFrameNum = 0; break;
-		case 0: curFrameNum = 2; break;
-		default: curFrameNum = 0; break;
+			switch (curFrameNum)
+			{
+			case 2: curFrameNum = 0; break;
+			case 0: curFrameNum = 2; break;
+			default: curFrameNum = 0; break;
+			}
+			updateCounter = 0;
 		}
-		updateCounter = 0;
+		updateCounter++;
 	}
 
-	updateCounter++;
+	if (movingChkDelay < 0)
+	{
+		{
+			int key = rand() % 100;
+			if (isMoving) key < 15 ? isMoving = false : NULL;
+			else isMoving = true;
+		}
+		movingChkDelay = (rand()%150)+35;
+	}
+	movingChkDelay--;
 }
 
 void Cat::Render(HDC hdc)
@@ -121,14 +139,14 @@ void Cat::Render(HDC hdc)
 	imgDC = CreateCompatibleDC(hdc);
 	if (!isAddingX) {
 		oldBitmap = (HBITMAP)SelectObject(imgDC, myBitmap);
-		TransparentBlt(hdc, posX - sizeX, posY - sizeY, sizeX * 2, sizeY * 2, 
+		TransparentBlt(hdc, posX - sizeX, posY - sizeY, sizeX * 2, sizeY * 2,
 			imgDC, (sizeX * 2) * curFrameNum, 0, sizeX * 2, sizeY * 2, RGB(255, 0, 255));
 	}
 	else
 	{
 		oldBitmap = (HBITMAP)SelectObject(imgDC, reverseImg);
-		TransparentBlt(hdc, posX - sizeX, posY - sizeY, sizeX * 2, sizeY * 2, 
-			imgDC, (300-CATSIZE_X)-((sizeX * 2) * curFrameNum), 0, sizeX * 2, sizeY * 2, RGB(255, 0, 255));
+		TransparentBlt(hdc, posX - sizeX, posY - sizeY, sizeX * 2, sizeY * 2,
+			imgDC, (300 - CATSIZE_X) - ((sizeX * 2) * curFrameNum), 0, sizeX * 2, sizeY * 2, RGB(255, 0, 255));
 	}
 
 
