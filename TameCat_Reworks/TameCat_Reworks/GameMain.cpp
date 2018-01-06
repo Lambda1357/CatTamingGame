@@ -130,8 +130,8 @@ void GameMain::Update()
 void GameMain::Render()
 {
 	TCHAR boxSmallMsg[256];
-	TCHAR moneyTmp[24];
-	TCHAR hairballTmp[24];
+	TCHAR moneyTmp[32];
+	TCHAR hairballTmp[32];
 	hdc = GetDC(g_Hwnd);
 	backDC = CreateCompatibleDC(hdc);
 	backBit = CreateCompatibleBitmap(hdc, 978, 600);
@@ -158,6 +158,9 @@ void GameMain::Render()
 			if (catlist[i] != NULL)
 				catlist[i]->Render(backDC);
 		}
+
+		boxMoney.Render(backDC);
+		boxhairball.Render(backDC);
 		GetGoyangDC(backDC);
 		sizegoyang = 40;
 		wsprintf(moneyTmp, TEXT("Gold: %3d"), gold);
@@ -166,10 +169,8 @@ void GameMain::Render()
 		DrawText(goyangDC, hairballTmp, -1, &(boxhairball.GetRect()), DT_CENTER);
 		ReleaseGoyangDC();
 		sizegoyang = 20;
-
 		BitBlt(backDC, boxMoney.GetRect().left, boxMoney.GetRect().top, boxMoney.GetSize().x*2 , boxMoney.GetSize().y*2, goyangDC, boxMoney.GetRect().left, boxMoney.GetRect().top, SRCAND);
-		boxMoney.Render(backDC);
-		boxhairball.Render(backDC);
+
 		switch (SCENEMANEGER->GetStatus())
 		{
 		case 0:

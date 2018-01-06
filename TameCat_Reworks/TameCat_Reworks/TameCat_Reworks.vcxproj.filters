@@ -1,76 +1,87 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="소스 파일">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="헤더 파일">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
     <Filter Include="리소스 파일">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Common header">
+      <UniqueIdentifier>{f05ed93a-6e7e-48f6-abf1-6e58acaa72cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common header\Precompiled header">
+      <UniqueIdentifier>{dbea9156-026a-4a0b-846f-552b42f7f3f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameMain">
+      <UniqueIdentifier>{9a7f2506-40d4-452d-8942-7995c14df899}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object">
+      <UniqueIdentifier>{68c291bb-925c-4f76-a57d-069ef8845a9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Cat">
+      <UniqueIdentifier>{4d6203d3-2026-468b-b61a-557298862cd1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Singletone Classes">
+      <UniqueIdentifier>{68686781-b03f-4f14-866d-943a98037f8d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Singletone Classes\InputManager">
+      <UniqueIdentifier>{060b0140-4cc4-4b8a-8733-20338e65adf6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Singletone Classes\SceneManager">
+      <UniqueIdentifier>{1542f81f-880a-4e27-8a5e-c2eee682861c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="stdafx.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="targetver.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="_ScreenCopy.h">
+      <Filter>Common header</Filter>
     </ClInclude>
     <ClInclude Include="Resource.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>Common header</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Common header</Filter>
     </ClInclude>
     <ClInclude Include="TameCat_Reworks.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>Common header</Filter>
     </ClInclude>
-    <ClInclude Include="SceneManeger.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="stdafx.h">
+      <Filter>Common header\Precompiled header</Filter>
     </ClInclude>
     <ClInclude Include="GameMain.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>GameMain</Filter>
     </ClInclude>
     <ClInclude Include="Object.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="InputManeger.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>Object</Filter>
     </ClInclude>
     <ClInclude Include="Cat.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>Object\Cat</Filter>
     </ClInclude>
-    <ClInclude Include="_ScreenCopy.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="InputManeger.h">
+      <Filter>Singletone Classes\InputManager</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManeger.h">
+      <Filter>Singletone Classes\SceneManager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="TameCat_Reworks.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneManeger.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>Common header\Precompiled header</Filter>
     </ClCompile>
     <ClCompile Include="GameMain.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>GameMain</Filter>
     </ClCompile>
     <ClCompile Include="Object.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="InputManeger.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>Object</Filter>
     </ClCompile>
     <ClCompile Include="Cat.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>Object\Cat</Filter>
     </ClCompile>
+    <ClCompile Include="InputManeger.cpp">
+      <Filter>Singletone Classes\InputManager</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManeger.cpp">
+      <Filter>Singletone Classes\SceneManager</Filter>
+    </ClCompile>
+    <ClCompile Include="TameCat_Reworks.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="TameCat_Reworks.rc">
@@ -89,5 +100,8 @@
     <None Include="font1.bin">
       <Filter>리소스 파일</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
   </ItemGroup>
 </Project>
