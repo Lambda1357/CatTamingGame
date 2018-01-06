@@ -18,9 +18,9 @@ void GameMain::Init()
 
 	SCENEMANEGER->SetScene(SN_START);
 	//공통 UI 로드
-	boxSmall.Init(TEXT("./resource/UI/boxSmall.bmp"));
-	boxSmall.SetPos(489, 300);
-	boxSmall.SetSize(225, 125);
+	boxSmall.Init(TEXT("./resource/UI/boxCatcare.bmp"));
+	boxSmall.SetPos(139, 150);
+	boxSmall.SetSize(700, 295);
 
 	boxFloat.Init(TEXT("./resource/UI/boxfloat.bmp"));
 	boxFloat.SetPos(489, 300);
@@ -35,35 +35,35 @@ void GameMain::Init()
 	boxhairball.SetPos(hair);
 
 	closeButton.Init(TEXT("./resource/UI/closeButton.bmp"));
-	closeButton.SetSize(17, 17);
+	closeButton.SetSize(35, 35);
 
 	//RECT rc = { 420,420,420 + 200,420 + 75 };
 	longButton.Init(TEXT("./resource/UI/longButton.bmp"));
-	longButton.SetPos(489,500);
-	longButton.SetSize(100, 37);
+	longButton.SetPos(389,463);
+	longButton.SetSize(200, 75);
 	
 
 	//배경파일 로드
 	background[SN_START].Init(TEXT("./resource/Background/bg_title.bmp"));
-	background[SN_START].SetPos(489, 300);
-	background[SN_START].SetSize(489, 300);
+	background[SN_START].SetPos(0, 0);
+	background[SN_START].SetSize(978, 600);
 
 	background[SN_COLLECTION].Init(TEXT("./resource/Background/bg_collection.bmp"));
-	background[SN_COLLECTION].SetPos(489, 300);
-	background[SN_COLLECTION].SetSize(489, 300);
+	background[SN_COLLECTION].SetPos(0, 0);
+	background[SN_COLLECTION].SetSize(978, 600);
 
 	background[SN_SHOP].Init(TEXT("./resource/Background/bg_shop.bmp"));
-	background[SN_SHOP].SetPos(489, 300);
-	background[SN_SHOP].SetSize(489, 300);
+	background[SN_SHOP].SetPos(0, 0);
+	background[SN_SHOP].SetSize(978, 600);
 /*
 	background[SN_MINIGAME].Init(TEXT("./resource/Background/bg_fishing.bmp"));
-	background[SN_MINIGAME].SetPos(489, 300);
-	background[SN_MINIGAME].SetSize(489, 300);
+	background[SN_MINIGAME].SetPos(0, 0);
+	background[SN_MINIGAME].SetSize(978, 600);
 */
 
 	background[SN_HOME].Init(TEXT("./resource/Background/bg_home.bmp"));
-	background[SN_HOME].SetPos(489, 300);
-	background[SN_HOME].SetSize(489, 300);
+	background[SN_HOME].SetPos(0, 0);
+	background[SN_HOME].SetSize(978, 600);
 
 	
 
@@ -104,7 +104,7 @@ void GameMain::Update()
 					if (INPUTMANEGER->IsHit(*catlist[i]))
 					{
 						temp = boxSmall.GetPos();
-						closeButton.SetPos(temp.x + 200, temp.y - 100);
+						closeButton.SetPos(790, 160);
 						infoCat = catlist[i];
 						SCENEMANEGER->SetStatus(1);
 					}

@@ -139,14 +139,12 @@ void Cat::Render(HDC hdc)
 	imgDC = CreateCompatibleDC(hdc);
 	if (!isAddingX) {
 		oldBitmap = (HBITMAP)SelectObject(imgDC, myBitmap);
-		TransparentBlt(hdc, posX - sizeX, posY - sizeY, sizeX * 2, sizeY * 2,
-			imgDC, (sizeX * 2) * curFrameNum, 0, sizeX * 2, sizeY * 2, RGB(255, 0, 255));
+		TransparentBlt(hdc, posX, posY, sizeX, sizeY, imgDC, sizeX * curFrameNum, 0, sizeX, sizeY, RGB(255, 0, 255));
 	}
 	else
 	{
 		oldBitmap = (HBITMAP)SelectObject(imgDC, reverseImg);
-		TransparentBlt(hdc, posX - sizeX, posY - sizeY, sizeX * 2, sizeY * 2,
-			imgDC, (300 - CATSIZE_X) - ((sizeX * 2) * curFrameNum), 0, sizeX * 2, sizeY * 2, RGB(255, 0, 255));
+		TransparentBlt(hdc, posX, posY, sizeX, sizeY, imgDC, sizeX * curFrameNum, 0, sizeX, sizeY, RGB(255, 0, 255));
 	}
 
 
