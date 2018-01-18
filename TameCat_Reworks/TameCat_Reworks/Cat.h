@@ -62,6 +62,7 @@ public:
 	void Update();
 	void Render(HDC hdc);
 	void Destoy();
+	void PortraitRander(HDC hdc);
 
 	TCHAR catName[24];
 	void AddHunger(int addCnt);

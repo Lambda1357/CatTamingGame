@@ -158,6 +158,17 @@ void Cat::Destoy()
 	DeleteObject(myBitmap);
 }
 
+void Cat::PortraitRander(HDC hdc)
+{
+	imgDC = CreateCompatibleDC(hdc);
+
+	oldBitmap = (HBITMAP)SelectObject(imgDC, myBitmap);
+	TransparentBlt(hdc, 194, 210, 145, 140, imgDC, 0, 0, 73, 70, RGB(255, 0, 255));
+
+	SelectObject(imgDC, oldBitmap);
+	DeleteDC(imgDC);
+}
+
 void Cat::AddHunger(int addCnt)
 {
 	if (hungerPoint + addCnt < 100) hungerPoint += addCnt;

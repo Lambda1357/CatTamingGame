@@ -102,7 +102,7 @@ void GameMain::Update()
 				if (catlist[i] != NULL)
 					if (INPUTMANEGER->IsHit(*catlist[i]))
 					{
-						closeButton.SetPos(790, 160);
+						closeButton.SetPos(795, 160);
 						infoCat = catlist[i];
 						SCENEMANEGER->SetStatus(1);
 					}
@@ -127,9 +127,8 @@ void GameMain::Update()
 
 void GameMain::Render()
 {
-	TCHAR boxSmallMsg[256];
-	TCHAR moneyTmp[128];
-	TCHAR hairballTmp[128];
+	TCHAR textTemp[256];
+	static RECT TextposCatname = { 194,360,334,390 };
 	hdc = GetDC(g_Hwnd);
 	backDC = CreateCompatibleDC(hdc);
 	backBit = CreateCompatibleBitmap(hdc, 978, 600);
@@ -162,11 +161,11 @@ void GameMain::Render()
 
 		sizegoyang = 30;
 		GetGoyangDC(backDC);
-		wsprintf(moneyTmp, TEXT("Gold: %3d"), gold);
-		DrawText(goyangDC, moneyTmp, -1, &(boxMoney.GetRect()), DT_CENTER);
+		wsprintf(textTemp, TEXT("Gold: %3d"), gold);
+		DrawText(goyangDC, textTemp, -1, &(boxMoney.GetRect()), DT_CENTER);
 
-		wsprintf(hairballTmp, TEXT("ÅÐ¹¶Ä¡: %3d"), hairball);
-		DrawText(goyangDC, hairballTmp, -1, &(boxhairball.GetRect()), DT_CENTER);
+		wsprintf(textTemp, TEXT("ÅÐ¹¶Ä¡: %3d"), hairball);
+		DrawText(goyangDC, textTemp, -1, &(boxhairball.GetRect()), DT_CENTER);
 
 		BitBlt(backDC, boxMoney.GetRect().left, boxMoney.GetRect().top, boxhairball.GetPos().x+boxhairball.GetSize().x, boxhairball.GetPos().y+boxhairball.GetSize().y,
 			goyangDC, boxMoney.GetRect().left, boxMoney.GetRect().top, SRCAND);
@@ -182,11 +181,19 @@ void GameMain::Render()
 			//»óÅÂ:°í¾çÀÌ Á¤º¸Ã¢
 			boxSmall.Render(backDC);
 			closeButton.Render(backDC);
-			GetGoyangDC(backDC);
-			wsprintf(boxSmallMsg, TEXT("\n   °í¾çÀÌ ÀÌ¸§: %s\n   Çã±â: %d%%\n   ¾ÖÁ¤µµ: %d / %d"), infoCat->catName,infoCat->Gethunger(),infoCat->GetLove(),infoCat->GetMaxLove());
-			DrawText(goyangDC, boxSmallMsg, -1, &(boxSmall.GetRect()), DT_TOP | DT_LEFT | DT_WORDBREAK);
-			BitBlt(backDC, boxSmall.GetRect().left, boxSmall.GetRect().top, (boxSmall.GetSize().x) * 2, (boxSmall.GetSize().y) * 2, goyangDC, boxSmall.GetRect().left, boxSmall.GetRect().top, SRCAND);
-			ReleaseGoyangDC();
+
+			if (_tcslen(infoCat->catName) < 8)
+				sizegothic = 25;
+			else
+				sizegothic = 18;
+
+			GetGothicDC(backDC);
+			wsprintf(textTemp, TEXT("%s"), infoCat->catName);
+			DrawText(gothicDC, textTemp, -1, &TextposCatname,DT_CENTER);
+
+			BitBlt(backDC, boxSmall.GetRect().left, boxSmall.GetRect().top, (boxSmall.GetSize().x) * 2, (boxSmall.GetSize().y) * 2, gothicDC, boxSmall.GetRect().left, boxSmall.GetRect().top, SRCAND);
+			ReleaseGothicDC();
+			infoCat->PortraitRander(backDC);
 			break;
 		}
 		break;
@@ -249,7 +256,7 @@ void GameMain::GetGothicDC(HDC hdc)
 	gothicDC = CreateCompatibleDC(hdc);
 	oldGothicBit = (HBITMAP)SelectObject(gothicDC, hBitmap);
 	FillRect(gothicDC, &rect,(HBRUSH)GetStockObject(WHITE_BRUSH));
-	hGoyang = CreateFont(sizegothic, 0, 0, 0, 0, 0, 0, 0, HANGEUL_CHARSET, 0, 0, 0, VARIABLE_PITCH | FF_ROMAN, TEXT("³ª´®°íµñ Light"));
+	hGothic = CreateFont(sizegothic, 0, 0, 0, 0, 0, 0, 0, HANGEUL_CHARSET, 0, 0, 0, VARIABLE_PITCH | FF_ROMAN, TEXT("³ª´®°íµñ Light"));
 	oldGothic = (HFONT)SelectObject(gothicDC, hGothic);
 	SetBkMode(gothicDC, TRANSPARENT);
 }
