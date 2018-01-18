@@ -83,6 +83,7 @@ void GameMain::Init()
 
 void GameMain::Update()
 {
+	RECT tmpHitbox;
 	switch (SCENEMANEGER->GetScene())
 	{
 	case SN_START:
@@ -110,6 +111,12 @@ void GameMain::Update()
 			break;
 		case 1:
 			if (INPUTMANEGER->IsHit(closeButton)) SCENEMANEGER->SetStatus(0);
+			AdjustRect(&tmpHitbox, 689, 358, 789, 398);
+			if (INPUTMANEGER->IsHit(tmpHitbox))
+			{
+				DelCat(infoCat);
+				SCENEMANEGER->SetStatus(0);
+			}
 			break;
 		}
 		break;
@@ -245,6 +252,31 @@ BOOL GameMain::AddCat(TCHAR* imgRoot, CatCode code)
 		return FALSE;
 	}
 	else return TRUE;
+}
+
+BOOL GameMain::DelCat(Cat* curCat)
+{
+	bool isFinding = true;
+
+	for (int i = 0; i <= curentCatnum; i++)
+	{
+		if (isFinding)
+		{
+			if (catlist[i] == curCat)
+			{
+				delete(catlist[i]);
+				isFinding = false;
+			}
+		}
+		else
+		{
+				catlist[i - 1] = catlist[i];
+		}
+	}
+	catlist[curentCatnum] = NULL;
+	curentCatnum - 1;
+
+	return TRUE;
 }
 
 void GameMain::GetGoyangDC(HDC hdc)

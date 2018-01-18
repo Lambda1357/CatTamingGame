@@ -19,6 +19,7 @@ public:
 	void LbuttonDown();
 	void LbuttonUp();
 	BOOL IsHit(Object);
+	BOOL IsHit(RECT);
 };
 
 

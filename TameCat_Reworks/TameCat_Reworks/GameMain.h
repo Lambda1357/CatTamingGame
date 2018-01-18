@@ -44,6 +44,7 @@ private:
 	int gold, hairball;
 
 	BOOL AddCat(TCHAR* imgRoot, CatCode code);
+	BOOL DelCat(Cat* curCat);
 
 	void GetGoyangDC(HDC hdc);
 	void GetGothicDC(HDC hdc);
