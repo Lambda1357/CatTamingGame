@@ -18,6 +18,10 @@ void GameMain::Init()
 
 	SCENEMANEGER->SetScene(SN_START);
 	//공통 UI 로드
+	logo.Init(TEXT("./resource/UI/logo.bmp"));
+	logo.SetPos(339, 40);
+	logo.SetSize(300, 220);
+
 	boxSmall.Init(TEXT("./resource/UI/boxCatcare.bmp"));
 	boxSmall.SetPos(139, 150);
 	boxSmall.SetSize(700, 295);
@@ -147,6 +151,7 @@ void GameMain::Render()
 	case SN_START:
 		background[SN_START].Render(backDC);
 		longButton.Render(backDC);
+		logo.Render(backDC);
 
 		sizegoyang = 75;
 		GetGoyangDC(backDC);

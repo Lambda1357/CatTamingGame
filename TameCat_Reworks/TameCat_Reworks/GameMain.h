@@ -30,7 +30,7 @@ private:
 	//배경 리스트
 	Object background[LAST_SN - 1];
 
-	//UI 로드
+	//UI
 	Object boxSmall;
 	Object boxFloat;
 	Object boxMoney,boxhairball,boxCollectper;
@@ -38,6 +38,8 @@ private:
 	Object longButton;
 	Object shortButton;
 	Object closeButton;
+
+	Object logo;
 
 	int curentCatnum;
 	int maxCatCount;
