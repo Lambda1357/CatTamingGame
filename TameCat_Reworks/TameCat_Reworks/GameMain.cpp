@@ -18,18 +18,23 @@ void GameMain::Init()
 
 	SCENEMANEGER->SetScene(SN_START);
 	//공통 UI 로드
-	logo.Init(TEXT("./resource/UI/logo.bmp"));
-	logo.SetPos(339, 40);
-	logo.SetSize(300, 220);
 
-	boxSmall.Init(TEXT("./resource/UI/boxCatcare.bmp"));
-	boxSmall.SetPos(139, 150);
-	boxSmall.SetSize(700, 295);
+	boxCatcare.Init(TEXT("./resource/UI/boxCatcare.bmp"));
+	boxCatcare.SetPos(139, 150);
+	boxCatcare.SetSize(700, 295);
 
 	boxFloat.Init(TEXT("./resource/UI/boxfloat.bmp"));
 	boxFloat.SetPos(489, 300);
 	boxFloat.SetSize(350, 150);
 
+	closeButton.Init(TEXT("./resource/UI/closeButton.bmp"));
+	closeButton.SetSize(35, 35);
+
+	longButton.Init(TEXT("./resource/UI/longButton.bmp"));
+	longButton.SetPos(389,463);
+	longButton.SetSize(200, 75);
+	
+	//홈 UI
 	boxMoney.Init(TEXT("./resource/UI/boxMoney.bmp"));
 	RECT money = { 69,30,219,90 };
 	boxMoney.SetPos(money);
@@ -38,14 +43,14 @@ void GameMain::Init()
 	RECT hair = { 249,30,399,90 };
 	boxhairball.SetPos(hair);
 
-	closeButton.Init(TEXT("./resource/UI/closeButton.bmp"));
-	closeButton.SetSize(35, 35);
+	invenButton.Init(TEXT("./resource/UI/invenButton.bmp"));
+	invenButton.SetPos(838, 30);
+	invenButton.SetSize(70, 60);
 
-	//RECT rc = { 420,420,420 + 200,420 + 75 };
-	longButton.Init(TEXT("./resource/UI/longButton.bmp"));
-	longButton.SetPos(389,463);
-	longButton.SetSize(200, 75);
-	
+	//시작 UI
+	logo.Init(TEXT("./resource/UI/logo.bmp"));
+	logo.SetPos(339, 40);
+	logo.SetSize(300, 220);
 
 	//배경파일 로드
 	background[SN_START].Init(TEXT("./resource/Background/bg_title.bmp"));
@@ -102,6 +107,11 @@ void GameMain::Update()
 		switch (SCENEMANEGER->GetStatus())
 		{
 		case 0:
+			if (INPUTMANEGER->IsHit(invenButton))
+			{
+				SCENEMANEGER->SetStatus(2);
+				break;
+			}
 			for (int i = 0; i < 20; i++)
 			{
 				if (catlist[i] != NULL)
@@ -121,6 +131,10 @@ void GameMain::Update()
 				DelCat(infoCat);
 				SCENEMANEGER->SetStatus(0);
 			}
+			break;
+
+		case 2:
+
 			break;
 		}
 		break;
@@ -173,10 +187,10 @@ void GameMain::Render()
 
 		sizegoyang = 30;
 		GetGoyangDC(backDC);
-		wsprintf(textTemp, TEXT("Gold: %3d"), gold);
+		wsprintf(textTemp, TEXT("       %3d"), gold);
 		DrawText(goyangDC, textTemp, -1, &(boxMoney.GetRect()), DT_CENTER);
 
-		wsprintf(textTemp, TEXT("털뭉치: %3d"), hairball);
+		wsprintf(textTemp, TEXT("       %3d"), hairball);
 		DrawText(goyangDC, textTemp, -1, &(boxhairball.GetRect()), DT_CENTER);
 
 		BitBlt(backDC, boxMoney.GetRect().left, boxMoney.GetRect().top, boxhairball.GetPos().x+boxhairball.GetSize().x, boxhairball.GetPos().y+boxhairball.GetSize().y,
@@ -191,7 +205,7 @@ void GameMain::Render()
 			break;
 		case 1:
 			//상태:고양이 정보창
-			boxSmall.Render(backDC);
+			boxCatcare.Render(backDC);
 			closeButton.Render(backDC);
 
 			if (_tcslen(infoCat->catName) < 8)
@@ -212,7 +226,7 @@ void GameMain::Render()
 			AdjustRect(&rectTmp, 378, 302, 378 + 396, 332);
 			DrawText(gothicDC, textTemp, -1, &rectTmp, DT_LEFT);
 			
-			BitBlt(backDC, boxSmall.GetRect().left, boxSmall.GetRect().top, (boxSmall.GetSize().x) * 2, (boxSmall.GetSize().y) * 2, gothicDC, boxSmall.GetRect().left, boxSmall.GetRect().top, SRCAND);
+			BitBlt(backDC, boxCatcare.GetRect().left, boxCatcare.GetRect().top, (boxCatcare.GetSize().x) * 2, (boxCatcare.GetSize().y) * 2, gothicDC, boxCatcare.GetRect().left, boxCatcare.GetRect().top, SRCAND);
 			ReleaseGothicDC();
 			infoCat->PortraitRander(backDC);
 

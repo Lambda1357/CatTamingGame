@@ -30,15 +30,19 @@ private:
 	//배경 리스트
 	Object background[LAST_SN - 1];
 
-	//UI
-	Object boxSmall;
+	//공통 UI
+	Object boxCatcare;
 	Object boxFloat;
-	Object boxMoney,boxhairball,boxCollectper;
 	
 	Object longButton;
 	Object shortButton;
 	Object closeButton;
 
+	//홈 UI
+	Object boxMoney, boxhairball;
+	Object invenButton;
+
+	//시작 UI
 	Object logo;
 
 	int curentCatnum;
