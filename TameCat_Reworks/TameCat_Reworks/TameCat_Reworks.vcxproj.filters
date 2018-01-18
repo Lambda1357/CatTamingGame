@@ -61,6 +61,9 @@
     <ClInclude Include="SceneManeger.h">
       <Filter>Singletone Classes\SceneManager</Filter>
     </ClInclude>
+    <ClInclude Include="RectFunc.h">
+      <Filter>Common header</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

@@ -26,5 +26,6 @@
 #include "Cat.h"
 #include "GameMain.h"
 #include "_ScreenCopy.h"
+#include "RectFunc.h"
 
 #pragma comment(lib,"msimg32.lib")

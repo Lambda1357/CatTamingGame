@@ -128,7 +128,7 @@ void GameMain::Update()
 void GameMain::Render()
 {
 	TCHAR textTemp[256];
-	static RECT TextposCatname = { 194,360,334,390 };
+	static RECT rectTmp;
 	hdc = GetDC(g_Hwnd);
 	backDC = CreateCompatibleDC(hdc);
 	backBit = CreateCompatibleBitmap(hdc, 978, 600);
@@ -189,11 +189,21 @@ void GameMain::Render()
 
 			GetGothicDC(backDC);
 			wsprintf(textTemp, TEXT("%s"), infoCat->catName);
-			DrawText(gothicDC, textTemp, -1, &TextposCatname,DT_CENTER);
+			AdjustRect(&rectTmp, 194, 360, 334, 390);
+			DrawText(gothicDC, textTemp, -1, &rectTmp,DT_CENTER);
 
+			wsprintf(textTemp, TEXT("%d / %d"), infoCat->GetLove(), infoCat->GetMaxLove());
+			AdjustRect(&rectTmp, 378, 246, 378 + 396, 276);
+			DrawText(gothicDC, textTemp, -1, &rectTmp, DT_LEFT);
+
+			wsprintf(textTemp, TEXT("%d%% / 100%%"), infoCat->Gethunger());
+			AdjustRect(&rectTmp, 378, 302, 378 + 396, 332);
+			DrawText(gothicDC, textTemp, -1, &rectTmp, DT_LEFT);
+			
 			BitBlt(backDC, boxSmall.GetRect().left, boxSmall.GetRect().top, (boxSmall.GetSize().x) * 2, (boxSmall.GetSize().y) * 2, gothicDC, boxSmall.GetRect().left, boxSmall.GetRect().top, SRCAND);
 			ReleaseGothicDC();
 			infoCat->PortraitRander(backDC);
+
 			break;
 		}
 		break;
