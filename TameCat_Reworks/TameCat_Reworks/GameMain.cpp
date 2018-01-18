@@ -83,7 +83,6 @@ void GameMain::Init()
 
 void GameMain::Update()
 {
-	POINT temp;
 	switch (SCENEMANEGER->GetScene())
 	{
 	case SN_START:
@@ -103,7 +102,6 @@ void GameMain::Update()
 				if (catlist[i] != NULL)
 					if (INPUTMANEGER->IsHit(*catlist[i]))
 					{
-						temp = boxSmall.GetPos();
 						closeButton.SetPos(790, 160);
 						infoCat = catlist[i];
 						SCENEMANEGER->SetStatus(1);
@@ -130,8 +128,8 @@ void GameMain::Update()
 void GameMain::Render()
 {
 	TCHAR boxSmallMsg[256];
-	TCHAR moneyTmp[32];
-	TCHAR hairballTmp[32];
+	TCHAR moneyTmp[128];
+	TCHAR hairballTmp[128];
 	hdc = GetDC(g_Hwnd);
 	backDC = CreateCompatibleDC(hdc);
 	backBit = CreateCompatibleBitmap(hdc, 978, 600);
@@ -146,8 +144,8 @@ void GameMain::Render()
 
 		sizegoyang = 75;
 		GetGoyangDC(backDC);
-		DrawText(goyangDC, TEXT("Start!"), -1, &(longButton.GetRect()), DT_CENTER);
-		BitBlt(backDC, longButton.GetRect().left, longButton.GetRect().top, longButton.GetSize().x * 2, longButton.GetSize().y * 2, goyangDC, longButton.GetRect().left, longButton.GetRect().top, SRCAND);
+		DrawText(goyangDC, TEXT("START!"), -1, &(longButton.GetRect()), DT_CENTER);
+		BitBlt(backDC, longButton.GetRect().left, longButton.GetRect().top, longButton.GetSize().x , longButton.GetSize().y , goyangDC, longButton.GetRect().left, longButton.GetRect().top, SRCAND);
 		sizegoyang = 20;
 		ReleaseGoyangDC();
 		break;
@@ -161,15 +159,19 @@ void GameMain::Render()
 
 		boxMoney.Render(backDC);
 		boxhairball.Render(backDC);
+
+		sizegoyang = 30;
 		GetGoyangDC(backDC);
-		sizegoyang = 40;
 		wsprintf(moneyTmp, TEXT("Gold: %3d"), gold);
 		DrawText(goyangDC, moneyTmp, -1, &(boxMoney.GetRect()), DT_CENTER);
+
 		wsprintf(hairballTmp, TEXT("ÅĞ¹¶Ä¡: %3d"), hairball);
 		DrawText(goyangDC, hairballTmp, -1, &(boxhairball.GetRect()), DT_CENTER);
+
+		BitBlt(backDC, boxMoney.GetRect().left, boxMoney.GetRect().top, boxhairball.GetPos().x+boxhairball.GetSize().x, boxhairball.GetPos().y+boxhairball.GetSize().y,
+			goyangDC, boxMoney.GetRect().left, boxMoney.GetRect().top, SRCAND);
+
 		ReleaseGoyangDC();
-		sizegoyang = 20;
-		BitBlt(backDC, boxMoney.GetRect().left, boxMoney.GetRect().top, boxMoney.GetSize().x*2 , boxMoney.GetSize().y*2, goyangDC, boxMoney.GetRect().left, boxMoney.GetRect().top, SRCAND);
 
 		switch (SCENEMANEGER->GetStatus())
 		{

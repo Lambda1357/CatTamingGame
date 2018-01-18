@@ -2,8 +2,8 @@
 #include "stdafx.h"
 #include "EventHandler.h"
 
-const int WINDOW_WIDTH = 1280;
-const int WINDOW_HEIGHT = 720;
+const int WINDOW_WIDTH = 978;
+const int WINDOW_HEIGHT = 600;
 
 
 class MainProc

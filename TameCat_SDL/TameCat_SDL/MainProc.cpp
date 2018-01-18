@@ -9,7 +9,7 @@ void MainProc::Init()
 	{
 		printf("SDL video init Failed! SDL_Error : %s\n", SDL_GetError());
 	}
-	pWindow = SDL_CreateWindow("Find it! Reversed Korea History", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_SHOWN);
+	pWindow = SDL_CreateWindow("TameCat", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_SHOWN);
 	if (pWindow == NULL)
 	{
 		printf("Window could not be created! SDL_Error: %s", SDL_GetError());

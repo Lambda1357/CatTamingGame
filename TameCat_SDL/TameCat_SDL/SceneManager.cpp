@@ -7,7 +7,7 @@ void SceneManager::Init()
 	sceneMap[SN_START] = new StartScene;
 
 	//Scene Initialize
-	sceneMap[SN_START]->Init("./img/backgroundStart.bmp");
+	sceneMap[SN_START]->Init("./img/background/bg_title.bmp");
 
 	//Set Current SceneNumber to Start Scene
 	curSn = SN_START;
