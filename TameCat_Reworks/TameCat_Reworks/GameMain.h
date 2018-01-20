@@ -41,6 +41,7 @@ private:
 	//»® UI
 	Object boxMoney, boxhairball;
 	Object invenButton;
+	Object boxInven;
 
 	//Ω√¿€ UI
 	Object logo;

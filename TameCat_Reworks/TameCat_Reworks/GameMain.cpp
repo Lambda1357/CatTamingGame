@@ -47,6 +47,10 @@ void GameMain::Init()
 	invenButton.SetPos(838, 30);
 	invenButton.SetSize(70, 60);
 
+	boxInven.Init(TEXT("./resource/UI/boxInven.bmp"));
+	boxInven.SetPos(139, 153);
+	boxInven.SetSize(700, 295);
+
 	//시작 UI
 	logo.Init(TEXT("./resource/UI/logo.bmp"));
 	logo.SetPos(339, 40);
@@ -73,10 +77,6 @@ void GameMain::Init()
 	background[SN_HOME].Init(TEXT("./resource/Background/bg_home.bmp"));
 	background[SN_HOME].SetPos(0, 0);
 	background[SN_HOME].SetSize(978, 600);
-
-	
-
-
 
 	//고양이리스트 초기화
 	for (int i = 0; i < 20; i++) catlist[i] = NULL;
@@ -107,8 +107,10 @@ void GameMain::Update()
 		switch (SCENEMANEGER->GetStatus())
 		{
 		case 0:
+			//기본 상태의 입력 체크
 			if (INPUTMANEGER->IsHit(invenButton))
 			{
+				closeButton.SetPos(795, 160);
 				SCENEMANEGER->SetStatus(2);
 				break;
 			}
@@ -124,8 +126,9 @@ void GameMain::Update()
 			}
 			break;
 		case 1:
+			//고양이 정보창 상태의 입력 체크
 			if (INPUTMANEGER->IsHit(closeButton)) SCENEMANEGER->SetStatus(0);
-			AdjustRect(&tmpHitbox, 689, 358, 789, 398);
+			AdjustRect(&tmpHitbox, 689, 358, 789, 398); //내보내기 버튼
 			if (INPUTMANEGER->IsHit(tmpHitbox))
 			{
 				DelCat(infoCat);
@@ -134,6 +137,10 @@ void GameMain::Update()
 			break;
 
 		case 2:
+			//인벤토리 상태의 입력 체크
+			if (INPUTMANEGER->IsHit(closeButton)) SCENEMANEGER->SetStatus(0);
+
+			//TODO:아이템 별 상호작용 만들어야 함
 
 			break;
 		}
@@ -184,6 +191,7 @@ void GameMain::Render()
 
 		boxMoney.Render(backDC);
 		boxhairball.Render(backDC);
+		invenButton.Render(backDC);
 
 		sizegoyang = 30;
 		GetGoyangDC(backDC);
@@ -200,14 +208,12 @@ void GameMain::Render()
 
 		switch (SCENEMANEGER->GetStatus())
 		{
-		case 0:
-			//누르기 전 버튼 로드
-			break;
 		case 1:
 			//상태:고양이 정보창
 			boxCatcare.Render(backDC);
 			closeButton.Render(backDC);
 
+			//이름 길이로 글씨 사이즈 가변화
 			if (_tcslen(infoCat->catName) < 8)
 				sizegothic = 25;
 			else
@@ -231,6 +237,10 @@ void GameMain::Render()
 			infoCat->PortraitRander(backDC);
 
 			break;
+		case 2:
+			boxInven.Render(backDC);
+			closeButton.Render(backDC);
+
 		}
 		break;
 	case SN_COLLECTION:
