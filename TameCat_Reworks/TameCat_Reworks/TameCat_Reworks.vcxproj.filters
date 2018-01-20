@@ -29,6 +29,9 @@
     <Filter Include="Singletone Classes\SceneManager">
       <UniqueIdentifier>{1542f81f-880a-4e27-8a5e-c2eee682861c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Object\Item">
+      <UniqueIdentifier>{6830b9bf-a6ad-4f4b-b2e6-26ae65f288b4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="_ScreenCopy.h">
