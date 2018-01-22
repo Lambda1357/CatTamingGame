@@ -67,6 +67,7 @@ public:
 	TCHAR catName[24];
 	void AddHunger(int addCnt);
 	void AddLove(int addCnt);
+	void AddButlerP(int addCnt);
 	inline int Gethunger() { return hungerPoint; };
 	inline int GetLove() { return lovePoint; };
 	inline int GetMaxLove() { return maxlove; };

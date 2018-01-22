@@ -31,9 +31,9 @@ void GameMain::Init()
 	closeButton.SetSize(35, 35);
 
 	longButton.Init(TEXT("./resource/UI/longButton.bmp"));
-	longButton.SetPos(389,463);
+	longButton.SetPos(389, 463);
 	longButton.SetSize(200, 75);
-	
+
 	//È¨ UI
 	boxMoney.Init(TEXT("./resource/UI/boxMoney.bmp"));
 	RECT money = { 69,30,219,90 };
@@ -68,11 +68,11 @@ void GameMain::Init()
 	background[SN_SHOP].Init(TEXT("./resource/Background/bg_shop.bmp"));
 	background[SN_SHOP].SetPos(0, 0);
 	background[SN_SHOP].SetSize(978, 600);
-/*
+
 	background[SN_MINIGAME].Init(TEXT("./resource/Background/bg_fishing.bmp"));
 	background[SN_MINIGAME].SetPos(0, 0);
 	background[SN_MINIGAME].SetSize(978, 600);
-*/
+
 
 	background[SN_HOME].Init(TEXT("./resource/Background/bg_home.bmp"));
 	background[SN_HOME].SetPos(0, 0);
@@ -88,6 +88,11 @@ void GameMain::Init()
 	AddCat(TEXT("./resource/chara/cat_heros.bmp"), CAT_HEROS);
 	AddCat(TEXT("./resource/chara/cat_fat.bmp"), CAT_FAT);
 	AddCat(TEXT("./resource/chara/cat_scotfold.bmp"), CAT_SCOTFOLD);
+
+	curTheme = BG_HOME;
+	forestBg.Init(_T("./resource/Background/bg_forest.bmp"));
+	parkBg.Init(_T("./resource/Background/bg_park.bmp"));
+
 }
 
 void GameMain::Update()
@@ -96,8 +101,8 @@ void GameMain::Update()
 	switch (SCENEMANEGER->GetScene())
 	{
 	case SN_START:
-			if (INPUTMANEGER->IsHit(longButton)) SCENEMANEGER->SetScene(SN_HOME);
-			break;
+		if (INPUTMANEGER->IsHit(longButton)) SCENEMANEGER->SetScene(SN_HOME);
+		break;
 	case SN_HOME:
 		for (int i = 0; i < 20; i++)
 		{
@@ -169,7 +174,6 @@ void GameMain::Render()
 	hBitmap = CreateCompatibleBitmap(hdc, 978, 600);
 	switch (SCENEMANEGER->GetScene())
 	{
-	case SN_START:
 		background[SN_START].Render(backDC);
 		longButton.Render(backDC);
 		logo.Render(backDC);
@@ -177,12 +181,23 @@ void GameMain::Render()
 		sizegoyang = 75;
 		GetGoyangDC(backDC);
 		DrawText(goyangDC, TEXT("START!"), -1, &(longButton.GetRect()), DT_CENTER);
-		BitBlt(backDC, longButton.GetRect().left, longButton.GetRect().top, longButton.GetSize().x , longButton.GetSize().y , goyangDC, longButton.GetRect().left, longButton.GetRect().top, SRCAND);
+		BitBlt(backDC, longButton.GetRect().left, longButton.GetRect().top, longButton.GetSize().x, longButton.GetSize().y, goyangDC, longButton.GetRect().left, longButton.GetRect().top, SRCAND);
 		sizegoyang = 20;
 		ReleaseGoyangDC();
 		break;
 	case SN_HOME:
-		background[SN_HOME].Render(backDC);
+		switch (curTheme)
+		{
+		case BG_PARK:
+			parkBg.Render(backDC);
+			break;
+		case BG_FOREST:
+			forestBg.Render(backDC);
+			break;
+		case BG_HOME:
+			background[SN_HOME].Render(backDC);
+			break;
+		}
 		for (int i = 0; i < 20; i++)
 		{
 			if (catlist[i] != NULL)
@@ -201,7 +216,7 @@ void GameMain::Render()
 		wsprintf(textTemp, TEXT("       %3d"), hairball);
 		DrawText(goyangDC, textTemp, -1, &(boxhairball.GetRect()), DT_CENTER);
 
-		BitBlt(backDC, boxMoney.GetRect().left, boxMoney.GetRect().top, boxhairball.GetPos().x+boxhairball.GetSize().x, boxhairball.GetPos().y+boxhairball.GetSize().y,
+		BitBlt(backDC, boxMoney.GetRect().left, boxMoney.GetRect().top, boxhairball.GetPos().x + boxhairball.GetSize().x, boxhairball.GetPos().y + boxhairball.GetSize().y,
 			goyangDC, boxMoney.GetRect().left, boxMoney.GetRect().top, SRCAND);
 
 		ReleaseGoyangDC();
@@ -222,7 +237,7 @@ void GameMain::Render()
 			GetGothicDC(backDC);
 			wsprintf(textTemp, TEXT("%s"), infoCat->catName);
 			AdjustRect(&rectTmp, 194, 360, 334, 390);
-			DrawText(gothicDC, textTemp, -1, &rectTmp,DT_CENTER);
+			DrawText(gothicDC, textTemp, -1, &rectTmp, DT_CENTER);
 
 			wsprintf(textTemp, TEXT("%d / %d"), infoCat->GetLove(), infoCat->GetMaxLove());
 			AdjustRect(&rectTmp, 378, 246, 378 + 396, 276);
@@ -231,7 +246,7 @@ void GameMain::Render()
 			wsprintf(textTemp, TEXT("%d%% / 100%%"), infoCat->Gethunger());
 			AdjustRect(&rectTmp, 378, 302, 378 + 396, 332);
 			DrawText(gothicDC, textTemp, -1, &rectTmp, DT_LEFT);
-			
+
 			BitBlt(backDC, boxCatcare.GetRect().left, boxCatcare.GetRect().top, (boxCatcare.GetSize().x) * 2, (boxCatcare.GetSize().y) * 2, gothicDC, boxCatcare.GetRect().left, boxCatcare.GetRect().top, SRCAND);
 			ReleaseGothicDC();
 			infoCat->PortraitRander(backDC);
@@ -299,7 +314,7 @@ BOOL GameMain::DelCat(Cat* curCat)
 		}
 		else
 		{
-				catlist[i - 1] = catlist[i];
+			catlist[i - 1] = catlist[i];
 		}
 	}
 	catlist[curentCatnum] = NULL;
@@ -326,7 +341,7 @@ void GameMain::GetGothicDC(HDC hdc)
 	GetClientRect(g_Hwnd, &rect);
 	gothicDC = CreateCompatibleDC(hdc);
 	oldGothicBit = (HBITMAP)SelectObject(gothicDC, hBitmap);
-	FillRect(gothicDC, &rect,(HBRUSH)GetStockObject(WHITE_BRUSH));
+	FillRect(gothicDC, &rect, (HBRUSH)GetStockObject(WHITE_BRUSH));
 	hGothic = CreateFont(sizegothic, 0, 0, 0, 0, 0, 0, 0, HANGEUL_CHARSET, 0, 0, 0, VARIABLE_PITCH | FF_ROMAN, TEXT("³ª´®°íµñ Light"));
 	oldGothic = (HFONT)SelectObject(gothicDC, hGothic);
 	SetBkMode(gothicDC, TRANSPARENT);

@@ -139,8 +139,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cat.h" />
+    <ClInclude Include="Deco.h" />
+    <ClInclude Include="Feed.h" />
     <ClInclude Include="GameMain.h" />
+    <ClInclude Include="HomeTheme.h" />
     <ClInclude Include="InputManeger.h" />
+    <ClInclude Include="Item.h" />
+    <ClInclude Include="ItemCode.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="RectFunc.h" />
     <ClInclude Include="Resource.h" />
@@ -148,12 +153,15 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="TameCat_Reworks.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="Toy.h" />
     <ClInclude Include="_ScreenCopy.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Cat.cpp" />
+    <ClCompile Include="Feed.cpp" />
     <ClCompile Include="GameMain.cpp" />
     <ClCompile Include="InputManeger.cpp" />
+    <ClCompile Include="Item.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="SceneManeger.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -163,6 +171,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="TameCat_Reworks.cpp" />
+    <ClCompile Include="Toy.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="TameCat_Reworks.rc" />

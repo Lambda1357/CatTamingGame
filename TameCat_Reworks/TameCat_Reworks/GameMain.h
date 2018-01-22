@@ -1,4 +1,5 @@
 #pragma once
+#include "HomeTheme.h"
 
 extern HINSTANCE hInst;
 
@@ -24,11 +25,14 @@ private:
 	HBITMAP hOldbit;
 	Cat *catlist[20];
 
+	HomeTheme curTheme;
+	Object forestBg, parkBg;
+
 	//고양이 정보조회용
 	Cat *infoCat;
 
 	//배경 리스트
-	Object background[LAST_SN - 1];
+	Object background[LAST_SN];
 
 	//공통 UI
 	Object boxCatcare;

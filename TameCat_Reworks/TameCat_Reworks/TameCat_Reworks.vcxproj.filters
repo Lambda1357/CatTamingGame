@@ -29,8 +29,17 @@
     <Filter Include="Singletone Classes\SceneManager">
       <UniqueIdentifier>{1542f81f-880a-4e27-8a5e-c2eee682861c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Object\Item">
+    <Filter Include="Item">
       <UniqueIdentifier>{6830b9bf-a6ad-4f4b-b2e6-26ae65f288b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Item\Feed">
+      <UniqueIdentifier>{cd66315d-8695-4039-a940-a2de76184c6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Item\Toy">
+      <UniqueIdentifier>{c7501426-1634-4a0a-bb58-8c4c0f7c3b95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Item\Deco">
+      <UniqueIdentifier>{62d93f28-af98-425f-8b70-cc6619cc3645}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -67,6 +76,24 @@
     <ClInclude Include="RectFunc.h">
       <Filter>Common header</Filter>
     </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>Item</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemCode.h">
+      <Filter>Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Feed.h">
+      <Filter>Item\Feed</Filter>
+    </ClInclude>
+    <ClInclude Include="Toy.h">
+      <Filter>Item\Toy</Filter>
+    </ClInclude>
+    <ClInclude Include="Deco.h">
+      <Filter>Item\Deco</Filter>
+    </ClInclude>
+    <ClInclude Include="HomeTheme.h">
+      <Filter>Common header</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -88,6 +115,15 @@
       <Filter>Singletone Classes\SceneManager</Filter>
     </ClCompile>
     <ClCompile Include="TameCat_Reworks.cpp" />
+    <ClCompile Include="Feed.cpp">
+      <Filter>Item\Feed</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Toy.cpp">
+      <Filter>Item\Toy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="TameCat_Reworks.rc">

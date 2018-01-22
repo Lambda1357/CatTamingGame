@@ -177,8 +177,14 @@ void Cat::AddHunger(int addCnt)
 
 void Cat::AddLove(int addCnt)
 {
-	if (lovePoint + addCnt < 100) lovePoint += addCnt;
-	else lovePoint = 100;
+	if (lovePoint + addCnt < maxlove) lovePoint += addCnt;
+	else lovePoint = maxlove;
+}
+
+void Cat::AddButlerP(int addCnt)
+{
+	if (butlerPoint + addCnt < 10) butlerPoint += addCnt;
+	else butlerPoint = 10;
 }
 
 Cat::Cat()
