@@ -1,5 +1,5 @@
 #pragma once
-#include "HomeTheme.h"
+#include "ItemMap.h"
 
 extern HINSTANCE hInst;
 
@@ -25,7 +25,6 @@ private:
 	HBITMAP hOldbit;
 	Cat *catlist[20];
 
-	HomeTheme curTheme;
 	Object forestBg, parkBg;
 
 	//고양이 정보조회용

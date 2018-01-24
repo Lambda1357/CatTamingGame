@@ -142,10 +142,10 @@
     <ClInclude Include="Deco.h" />
     <ClInclude Include="Feed.h" />
     <ClInclude Include="GameMain.h" />
-    <ClInclude Include="HomeTheme.h" />
     <ClInclude Include="InputManeger.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="ItemCode.h" />
+    <ClInclude Include="ItemMap.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="RectFunc.h" />
     <ClInclude Include="Resource.h" />
@@ -158,6 +158,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Cat.cpp" />
+    <ClCompile Include="Deco.cpp" />
     <ClCompile Include="Feed.cpp" />
     <ClCompile Include="GameMain.cpp" />
     <ClCompile Include="InputManeger.cpp" />

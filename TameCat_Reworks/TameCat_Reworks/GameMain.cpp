@@ -61,6 +61,10 @@ void GameMain::Init()
 	background[SN_START].SetPos(0, 0);
 	background[SN_START].SetSize(978, 600);
 
+	background[SN_HOME].Init(TEXT("./resource/Background/bg_home.bmp"));
+	background[SN_HOME].SetPos(0, 0);
+	background[SN_HOME].SetSize(978, 600);
+
 	background[SN_COLLECTION].Init(TEXT("./resource/Background/bg_collection.bmp"));
 	background[SN_COLLECTION].SetPos(0, 0);
 	background[SN_COLLECTION].SetSize(978, 600);
@@ -73,11 +77,6 @@ void GameMain::Init()
 	background[SN_MINIGAME].SetPos(0, 0);
 	background[SN_MINIGAME].SetSize(978, 600);
 
-
-	background[SN_HOME].Init(TEXT("./resource/Background/bg_home.bmp"));
-	background[SN_HOME].SetPos(0, 0);
-	background[SN_HOME].SetSize(978, 600);
-
 	//고양이리스트 초기화
 	for (int i = 0; i < 20; i++) catlist[i] = NULL;
 	curentCatnum = 0;
@@ -89,7 +88,7 @@ void GameMain::Init()
 	AddCat(TEXT("./resource/chara/cat_fat.bmp"), CAT_FAT);
 	AddCat(TEXT("./resource/chara/cat_scotfold.bmp"), CAT_SCOTFOLD);
 
-	curTheme = BG_HOME;
+	SCENEMANEGER->SetThemeTo(ItemCode::Deco::THEMEHOME);
 	forestBg.Init(_T("./resource/Background/bg_forest.bmp"));
 	parkBg.Init(_T("./resource/Background/bg_park.bmp"));
 
@@ -174,6 +173,7 @@ void GameMain::Render()
 	hBitmap = CreateCompatibleBitmap(hdc, 978, 600);
 	switch (SCENEMANEGER->GetScene())
 	{
+	case SN_START:
 		background[SN_START].Render(backDC);
 		longButton.Render(backDC);
 		logo.Render(backDC);
@@ -186,15 +186,15 @@ void GameMain::Render()
 		ReleaseGoyangDC();
 		break;
 	case SN_HOME:
-		switch (curTheme)
+		switch (SCENEMANEGER->GetCurTheme())
 		{
-		case BG_PARK:
+		case ItemCode::Deco::THEMEPARK:
 			parkBg.Render(backDC);
 			break;
-		case BG_FOREST:
+		case ItemCode::Deco::THEMEFOREST:
 			forestBg.Render(backDC);
 			break;
-		case BG_HOME:
+		case ItemCode::Deco::THEMEHOME:
 			background[SN_HOME].Render(backDC);
 			break;
 		}

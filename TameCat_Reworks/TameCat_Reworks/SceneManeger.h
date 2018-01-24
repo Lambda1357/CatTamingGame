@@ -1,4 +1,6 @@
 #pragma once
+#include "ItemCode.h"
+
 enum SceneNumber
 {
 	SN_START,
@@ -19,10 +21,14 @@ public:
 	int GetStatus();
 	void SetStatus(int sceneStatus);
 	void Destroy();
+	ItemCode::Deco GetCurTheme() { return currentTheme; }
+	void SetThemeTo(ItemCode::Deco code) { currentTheme = code; }
+
 private:
 	static SceneManeger* UniqueObj;
 	SceneNumber curentScene;
 	int curSceneStatus;
+	ItemCode::Deco currentTheme;
 	SceneManeger();
 	virtual ~SceneManeger();
 };
