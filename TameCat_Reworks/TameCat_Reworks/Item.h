@@ -2,10 +2,9 @@
 #include "stdafx.h"
 #include "ItemCode.h"
 
-class Item
+class Item : public Object
 {
 protected:
-	Object icon;
 	std::pair<std::string, std::string> description;
 	int price;
 	int count;
@@ -16,5 +15,6 @@ public:
 	virtual void Add(int cnt = 1) { count += cnt; }
 	int GetPrice() { return price; }
 	int GetCount() { return count; }
+	virtual void RenderInven(HDC dc) = 0;
 
 };

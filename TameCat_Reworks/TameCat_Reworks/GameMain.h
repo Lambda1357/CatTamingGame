@@ -23,12 +23,12 @@ private:
 
 	HBITMAP backBit;
 	HBITMAP hOldbit;
-	Cat *catlist[20];
+	Cat* catlist[20];
 
 	Object forestBg, parkBg;
 
 	//고양이 정보조회용
-	Cat *infoCat;
+	Cat* infoCat;
 
 	//배경 리스트
 	Object background[LAST_SN];
