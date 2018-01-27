@@ -61,6 +61,7 @@ Toy::Toy(ItemCode::Toy cd)
 		addButlerP = 5;
 		break;
 	}
+	myCode = cd;
 }
 
 void Toy::useItem(Cat target)
@@ -68,4 +69,13 @@ void Toy::useItem(Cat target)
 	target.AddButlerP(addButlerP);
 	target.AddLove(addLoveP);
 	count--;
+}
+
+void Toy::RenderInven(HDC dc)
+{
+	bgBox.SetPos(224 + (70 * ((int)myCode + 1)), 298);
+	Object::SetPos(229 + (70 * ((int)myCode + 1)), 303);
+
+	bgBox.Render(dc);
+	Object::Render(dc);
 }

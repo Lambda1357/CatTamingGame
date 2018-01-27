@@ -35,10 +35,20 @@ Feed::Feed(ItemCode::Feed cd)
 		addVelue = 100;
 		break;
 	}
+	myCode = cd;
 }
 
 void Feed::UseItem(Cat target)
 {
 	target.AddHunger(addVelue);
 	count--;
+}
+
+void Feed::RenderInven(HDC dc)
+{
+	bgBox.SetPos(224 + (70 * ((int)myCode + 1)), 215 );
+	Object::SetPos(229 + (70 * ((int)myCode + 1)), 220 );
+
+	bgBox.Render(dc);
+	Object::Render(dc);
 }

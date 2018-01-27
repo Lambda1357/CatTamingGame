@@ -12,4 +12,5 @@ private:
 public:
 	Toy(ItemCode::Toy cd);
 	void useItem(Cat target);
+	void RenderInven(HDC dc);
 };
