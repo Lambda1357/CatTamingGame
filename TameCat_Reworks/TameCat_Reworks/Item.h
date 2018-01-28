@@ -10,11 +10,6 @@ protected:
 	int count;
 
 	static Object bgBox;
-	static void BgBoxInit(TCHAR* addr)
-	{
-		bgBox.Init(addr);
-		bgBox.SetSize(60, 60);
-	}
 
 public:
 	virtual void UseItem(Cat) = 0;
@@ -26,6 +21,7 @@ public:
 		Object::Init(addr);
 		Object::SetSize(50, 50);
 	}
+	static void BgBoxInit(TCHAR* addr);
 
 	int GetPrice() { return price; }
 	int GetCount() { return count; }

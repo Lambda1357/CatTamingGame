@@ -36,6 +36,7 @@ Feed::Feed(ItemCode::Feed cd)
 		break;
 	}
 	myCode = cd;
+	count = 0;
 }
 
 void Feed::UseItem(Cat target)
@@ -46,8 +47,8 @@ void Feed::UseItem(Cat target)
 
 void Feed::RenderInven(HDC dc)
 {
-	bgBox.SetPos(224 + (70 * ((int)myCode + 1)), 215 );
-	Object::SetPos(229 + (70 * ((int)myCode + 1)), 220 );
+	bgBox.SetPos(224 + (70 * ((int)myCode)), 215 );
+	Object::SetPos(229 + (70 * ((int)myCode)), 220 );
 
 	bgBox.Render(dc);
 	Object::Render(dc);

@@ -8,5 +8,5 @@ struct ItemMap
 {
 	std::map<ItemCode::Feed, Item*> feed;
 	std::map<ItemCode::Toy, Item*> toy;
-	std::map<ItemCode::Deco, Item*> Deco;
+	std::map<ItemCode::Deco, Item*> deco;
 };

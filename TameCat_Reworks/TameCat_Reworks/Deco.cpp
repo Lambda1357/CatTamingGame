@@ -24,12 +24,13 @@ Deco::Deco(ItemCode::Deco cd)
 		break;
 	}
 	myCode = cd;
+	count = 0;
 }
 
 void Deco::RenderInven(HDC dc)
 {
-	bgBox.SetPos(224 + (70 * ((int)myCode + 1)), 376);
-	Object::SetPos(229 + (70 * ((int)myCode + 1)), 381);
+	bgBox.SetPos(224 + (70 * ((int)myCode)), 376);
+	Object::SetPos(229 + (70 * ((int)myCode)), 381);
 
 	bgBox.Render(dc);
 	Object::Render(dc);

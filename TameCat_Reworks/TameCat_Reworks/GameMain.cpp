@@ -1,5 +1,8 @@
 #include "stdafx.h"
 #include "GameMain.h"
+#include "Toy.h"
+#include "Feed.h"
+#include "Deco.h"
 
 HBITMAP hBitmap;
 
@@ -92,6 +95,86 @@ void GameMain::Init()
 	forestBg.Init(_T("./resource/Background/bg_forest.bmp"));
 	parkBg.Init(_T("./resource/Background/bg_park.bmp"));
 
+	//아이템 배경 로드
+	Item::BgBoxInit(_T("./resource/item/bgBox.bmp"));
+
+	//데코 아이템 로드
+	for (int i = 0; i != (int)ItemCode::Deco::LAST_DECO; i++)
+	{
+		ItemCode::Deco index = (ItemCode::Deco)i;
+		itemData.deco[index] = new Deco(index);
+		switch (index)
+		{
+		case ItemCode::Deco::THEMEPARK:
+			itemData.deco[index]->Init(_T("./resource/Item/itemThemePark.bmp"));
+			break;
+		case ItemCode::Deco::THEMEFOREST:
+			itemData.deco[index]->Init(_T("./resource/Item/itemThemeForest.bmp"));
+			break;
+		case ItemCode::Deco::THEMEHOME:
+			itemData.deco[index]->Init(_T("./resource/item/itemThemeHome.bmp"));
+			break;
+		}
+	}
+
+	//장난감 아이템 로드
+	for (int i = 0; i != (int)ItemCode::Toy::LAST_TOY; i++)
+	{
+		ItemCode::Toy index = (ItemCode::Toy)i;
+		itemData.toy[index] = new Toy(index);
+		switch (index)
+		{
+		case ItemCode::Toy::DOLPHINDOLL:
+			itemData.toy[index]->Init(_T("./resource/item/itemDolphinDoll.bmp"));
+			break;
+		case ItemCode::Toy::RATTOY:
+			itemData.toy[index]->Init(_T("./resource/item/itemRatToy.bmp"));
+			break;
+		case ItemCode::Toy::FEATHERROD:
+			itemData.toy[index]->Init(_T("./resource/item/itemFeatherRod.bmp"));
+			break;
+		case ItemCode::Toy::TOWERBALL:
+			itemData.toy[index]->Init(_T("./resource/item/itemTowerBall.bmp"));
+			break;
+		case ItemCode::Toy::MOBILETOY:
+			itemData.toy[index]->Init(_T("./resource/item/itemMobileToy.bmp"));
+			break;
+		case ItemCode::Toy::SCRATCHER:
+			itemData.toy[index]->Init(_T("./resource/item/itemScratcher.bmp"));
+			break;
+		case ItemCode::Toy::CATTOWER:
+			itemData.toy[index]->Init(_T("./resource/item/itemCatTower.bmp"));
+			break;
+		case ItemCode::Toy::CUSHION:
+			itemData.toy[index]->Init(_T("./resource/item/itemCushion.bmp"));
+			break;
+		}
+	}
+
+	//먹이 아이템 로드
+	for (int i = 0; i != (int)ItemCode::Feed::LAST_FEED; i++)
+	{
+		ItemCode::Feed index = (ItemCode::Feed)i;
+		itemData.feed[index] = new Feed(index);
+		switch (index)
+		{
+		case ItemCode::Feed::MILK:
+			itemData.feed[index]->Init(_T("./resource/item/itemMilk.bmp"));
+			break;
+		case ItemCode::Feed::FEED:
+			itemData.feed[index]->Init(_T("./resource/item/itemFeed.bmp"));
+			break;
+		case ItemCode::Feed::CAN:
+			itemData.feed[index]->Init(_T("./resource/item/itemCan.bmp"));
+			break;
+		case ItemCode::Feed::SUSHI:
+			itemData.feed[index]->Init(_T("./resource/item/itemSushi.bmp"));
+			break;
+		case ItemCode::Feed::CHUR:
+			itemData.feed[index]->Init(_T("./resource/item/itemChur.bmp"));
+			break;
+		}
+	}
 }
 
 void GameMain::Update()
@@ -255,6 +338,12 @@ void GameMain::Render()
 		case 2:
 			boxInven.Render(backDC);
 			closeButton.Render(backDC);
+
+			for (auto iter = itemData.deco.begin(); iter != itemData.deco.end(); iter++) iter->second->RenderInven(backDC);
+
+			for (auto iter = itemData.feed.begin(); iter != itemData.feed.end(); iter++) iter->second->RenderInven(backDC);
+
+			for (auto iter = itemData.toy.begin(); iter != itemData.toy.end(); iter++) iter->second->RenderInven(backDC);
 
 		}
 		break;

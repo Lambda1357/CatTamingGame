@@ -27,7 +27,9 @@ private:
 
 	Object forestBg, parkBg;
 
-	//고양이 정보조회용
+	ItemMap itemData;
+
+	//클릭한 고양이 정보
 	Cat* infoCat;
 
 	//배경 리스트

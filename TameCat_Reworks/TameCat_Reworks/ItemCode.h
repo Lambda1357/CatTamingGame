@@ -8,7 +8,8 @@ namespace ItemCode
 		FEED,
 		CAN,
 		SUSHI,
-		CHUR
+		CHUR,
+		LAST_FEED
 	};
 
 	enum class Toy
@@ -20,13 +21,15 @@ namespace ItemCode
 		MOBILETOY,
 		SCRATCHER,
 		CATTOWER,
-		CUSHION
+		CUSHION,
+		LAST_TOY
 	};
 
 	enum class Deco
 	{
 		THEMEPARK,
 		THEMEFOREST,
-		THEMEHOME
+		THEMEHOME,
+		LAST_DECO
 	};
 };

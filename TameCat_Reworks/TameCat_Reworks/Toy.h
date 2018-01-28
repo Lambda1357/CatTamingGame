@@ -6,11 +6,11 @@ class Toy : public Item
 private:
 	ItemCode::Toy myCode;
 	int addLoveP, addButlerP;
-	void useItem() {};
+	void UseItem() {};
 	Toy();
 
 public:
 	Toy(ItemCode::Toy cd);
-	void useItem(Cat target);
+	void UseItem(Cat target);
 	void RenderInven(HDC dc);
 };
