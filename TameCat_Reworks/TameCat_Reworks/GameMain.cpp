@@ -248,6 +248,8 @@ void GameMain::Render()
 {
 	TCHAR textTemp[256];
 	static RECT rectTmp;
+	int tmp;
+
 	hdc = GetDC(g_Hwnd);
 	backDC = CreateCompatibleDC(hdc);
 	backBit = CreateCompatibleBitmap(hdc, 978, 600);
@@ -338,13 +340,45 @@ void GameMain::Render()
 		case 2:
 			boxInven.Render(backDC);
 			closeButton.Render(backDC);
+			sizegothic = 16;
+			GetGothicDC(backDC);
+			tmp = 0;
 
-			for (auto iter = itemData.deco.begin(); iter != itemData.deco.end(); iter++) iter->second->RenderInven(backDC);
+			for (auto iter = itemData.deco.begin(); iter != itemData.deco.end(); iter++)
+			{
+				iter->second->RenderInven(backDC);
+				if (iter->second->GetCount() == -1) wsprintf(textTemp, _T("99+"));
+				else wsprintf(textTemp, _T("%d"), iter->second->GetCount());
+				AdjustRect(&rectTmp, 250 + (70 * tmp), 416, 280 + (70 * tmp), 430);
+				DrawText(gothicDC, textTemp, -1, &rectTmp, DT_RIGHT);
+				tmp++;
+			}
 
-			for (auto iter = itemData.feed.begin(); iter != itemData.feed.end(); iter++) iter->second->RenderInven(backDC);
+			tmp = 0;
+			for (auto iter = itemData.feed.begin(); iter != itemData.feed.end(); iter++)
+			{
+				iter->second->RenderInven(backDC);
 
-			for (auto iter = itemData.toy.begin(); iter != itemData.toy.end(); iter++) iter->second->RenderInven(backDC);
+				if (iter->second->GetCount() == -1) wsprintf(textTemp, _T("99+"));
+				else wsprintf(textTemp, _T("%d"), iter->second->GetCount());
+				AdjustRect(&rectTmp, 250 + (70 * tmp), 255, 280 + (70 * tmp), 271);
+				DrawText(gothicDC, textTemp, -1, &rectTmp, DT_RIGHT);
+				tmp++;
+			}
+			tmp = 0;
+			for (auto iter = itemData.toy.begin(); iter != itemData.toy.end(); iter++)
+			{
+				 iter->second->RenderInven(backDC);
 
+				 if (iter->second->GetCount() == -1) wsprintf(textTemp, _T("99+"));
+				 else wsprintf(textTemp, _T("%d"), iter->second->GetCount());
+				 AdjustRect(&rectTmp, 250 + (70 * tmp), 338, 280 + (70 * tmp), 354);
+				 DrawText(gothicDC, textTemp, -1, &rectTmp, DT_RIGHT);
+				 tmp++;
+			}
+
+			BitBlt(backDC, boxInven.GetRect().left, boxInven.GetRect().top, boxInven.GetRect().right, boxInven.GetRect().bottom, gothicDC, boxInven.GetPos().x, boxInven.GetPos().y, SRCAND);
+			ReleaseGothicDC();
 		}
 		break;
 	case SN_COLLECTION:

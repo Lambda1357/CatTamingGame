@@ -7,7 +7,7 @@ class Item : protected Object
 protected:
 	std::pair<std::string, std::string> description;
 	int price;
-	int count;
+	int count = 0;
 
 	static Object bgBox;
 
@@ -24,7 +24,6 @@ public:
 	static void BgBoxInit(TCHAR* addr);
 
 	int GetPrice() { return price; }
-	int GetCount() { return count; }
-
+	int GetCount();
 
 };
