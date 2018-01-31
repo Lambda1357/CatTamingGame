@@ -29,8 +29,8 @@ private:
 
 	ItemMap itemData;
 
-	//클릭한 고양이 정보
-	Cat* infoCat;
+	Cat* infoCat;//클릭한 고양이 정보
+
 
 	//배경 리스트
 	Object background[LAST_SN];

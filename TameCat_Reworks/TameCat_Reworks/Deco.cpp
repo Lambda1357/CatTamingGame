@@ -24,7 +24,7 @@ Deco::Deco(ItemCode::Deco cd)
 		break;
 	}
 	myCode = cd;
-	count = 0;
+	count = 1;
 }
 
 void Deco::RenderInven(HDC dc)

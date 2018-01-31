@@ -11,7 +11,7 @@ int Item::GetCount()
 	if (count < 99)
 		return count;
 	else
-		return -1;
+		return 100;
 }
 
 Object Item::bgBox = Object();

@@ -93,7 +93,11 @@ void GameMain::Init()
 
 	SCENEMANEGER->SetThemeTo(ItemCode::Deco::THEMEHOME);
 	forestBg.Init(_T("./resource/Background/bg_forest.bmp"));
+	forestBg.SetPos(0, 0);
+	forestBg.SetSize(978, 600);
 	parkBg.Init(_T("./resource/Background/bg_park.bmp"));
+	parkBg.SetPos(0, 0);
+	parkBg.SetSize(978, 600);
 
 	//아이템 배경 로드
 	Item::BgBoxInit(_T("./resource/item/bgBox.bmp"));
@@ -227,7 +231,16 @@ void GameMain::Update()
 			//인벤토리 상태의 입력 체크
 			if (INPUTMANEGER->IsHit(closeButton)) SCENEMANEGER->SetStatus(0);
 
+			//데코 아이템 사용
+			for (auto it = itemData.deco.begin(); it != itemData.deco.end(); it++)
+			{
+				if (INPUTMANEGER->IsHit(*(it->second)))
+				{
+					if (it->second->GetCount() > 0) it->second->UseItem();
+				}
+			}
 			//TODO:아이템 별 상호작용 만들어야 함
+
 
 			break;
 		}
@@ -347,7 +360,7 @@ void GameMain::Render()
 			for (auto iter = itemData.deco.begin(); iter != itemData.deco.end(); iter++)
 			{
 				iter->second->RenderInven(backDC);
-				if (iter->second->GetCount() == -1) wsprintf(textTemp, _T("99+"));
+				if (iter->second->GetCount() == 100) wsprintf(textTemp, _T("99+"));
 				else wsprintf(textTemp, _T("%d"), iter->second->GetCount());
 				AdjustRect(&rectTmp, 250 + (70 * tmp), 416, 280 + (70 * tmp), 430);
 				DrawText(gothicDC, textTemp, -1, &rectTmp, DT_RIGHT);

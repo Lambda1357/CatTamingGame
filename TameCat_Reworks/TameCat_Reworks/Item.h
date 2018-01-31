@@ -2,12 +2,12 @@
 #include "stdafx.h"
 #include "ItemCode.h"
 
-class Item : protected Object
+class Item : public Object
 {
 protected:
 	std::pair<std::string, std::string> description;
 	int price;
-	int count = 0;
+	int count;
 
 	static Object bgBox;
 
