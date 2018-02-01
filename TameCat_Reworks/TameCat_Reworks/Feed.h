@@ -11,7 +11,7 @@ private:
 
 public:
 	Feed(ItemCode::Feed cd);
-	void UseItem(Cat target);
+	void UseItem(Cat* target);
 	void RenderInven(HDC dc);
 
 };

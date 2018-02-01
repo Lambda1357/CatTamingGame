@@ -12,7 +12,7 @@ protected:
 	static Object bgBox;
 
 public:
-	virtual void UseItem(Cat) = 0;
+	virtual void UseItem(Cat*) = 0;
 	virtual void UseItem() = 0;
 	virtual void Add(int cnt = 1) { count += cnt; }
 	virtual void RenderInven(HDC dc) = 0;

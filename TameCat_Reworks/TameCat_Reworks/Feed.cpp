@@ -36,12 +36,12 @@ Feed::Feed(ItemCode::Feed cd)
 		break;
 	}
 	myCode = cd;
-	count = 0;
+	count = 1;
 }
 
-void Feed::UseItem(Cat target)
+void Feed::UseItem(Cat* target)
 {
-	target.AddHunger(addVelue);
+	target->AddHunger(addVelue);
 	count--;
 }
 

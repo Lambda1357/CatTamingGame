@@ -5,7 +5,7 @@ class Deco : public Item
 {
 private:
 	ItemCode::Deco myCode;
-	void UseItem(Cat) {};
+	void UseItem(Cat*) {};
 	Deco();
 
 public:

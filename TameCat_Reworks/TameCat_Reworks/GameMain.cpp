@@ -54,6 +54,10 @@ void GameMain::Init()
 	boxInven.SetPos(139, 153);
 	boxInven.SetSize(700, 295);
 
+	itemInfoBox.Init(TEXT("./resource/UI/itemInfoBox.bmp"));
+	itemInfoBox.SetPos(189, 500);
+	itemInfoBox.SetSize(600, 75);
+
 	//시작 UI
 	logo.Init(TEXT("./resource/UI/logo.bmp"));
 	logo.SetPos(339, 40);
@@ -239,9 +243,63 @@ void GameMain::Update()
 					if (it->second->GetCount() > 0) it->second->UseItem();
 				}
 			}
-			//TODO:아이템 별 상호작용 만들어야 함
 
+			//사료 아이템 선택
+			for (auto it = itemData.feed.begin(); it != itemData.feed.end(); it++)
+			{
+				if (INPUTMANEGER->IsHit(*(it->second)))
+				{
+					if (it->second->GetCount() > 0)
+					{
+						selectedFeed = it;
+						isChooseFeed = true;
+						closeButton.SetPos(734, 520);
+						selectedFeed->second->SetPos(206, 513);
+						SCENEMANEGER->SetStatus(3);
+					}
+				}
+			}
 
+			//장난감 아이템 선택
+			for (auto it = itemData.toy.begin(); it != itemData.toy.end(); it++)
+			{
+				if (INPUTMANEGER->IsHit(*(it->second)))
+				{
+					if (it->second->GetCount() > 0)
+					{
+						selectedToy = it;
+						isChooseFeed = false;
+						closeButton.SetPos(734, 520);
+						selectedToy->second->SetPos(206, 513);
+						SCENEMANEGER->SetStatus(3);
+					}
+				}
+			}
+			break;
+		case 3:
+			if (isChooseFeed)
+			{
+				if (INPUTMANEGER->IsHit(closeButton))
+				{
+					SCENEMANEGER->SetStatus(2);
+					closeButton.SetPos(795, 160);
+					break;
+				}
+				else
+				{
+					for (int i = 0; i < 20; i++)
+					{
+						if (catlist[i] != NULL)
+							if (INPUTMANEGER->IsHit(*catlist[i]))
+							{
+								selectedFeed->second->UseItem(catlist[i]);
+								SCENEMANEGER->SetStatus(0);
+							}
+					}
+				}
+			}
+
+			//TODO:인벤토리 상태에서 누른 장난감 아이템을 고양이를 눌러 체크하도록 만들기
 			break;
 		}
 		break;
@@ -381,17 +439,32 @@ void GameMain::Render()
 			tmp = 0;
 			for (auto iter = itemData.toy.begin(); iter != itemData.toy.end(); iter++)
 			{
-				 iter->second->RenderInven(backDC);
+				iter->second->RenderInven(backDC);
 
-				 if (iter->second->GetCount() == -1) wsprintf(textTemp, _T("99+"));
-				 else wsprintf(textTemp, _T("%d"), iter->second->GetCount());
-				 AdjustRect(&rectTmp, 250 + (70 * tmp), 338, 280 + (70 * tmp), 354);
-				 DrawText(gothicDC, textTemp, -1, &rectTmp, DT_RIGHT);
-				 tmp++;
+				if (iter->second->GetCount() == -1) wsprintf(textTemp, _T("99+"));
+				else wsprintf(textTemp, _T("%d"), iter->second->GetCount());
+				AdjustRect(&rectTmp, 250 + (70 * tmp), 338, 280 + (70 * tmp), 354);
+				DrawText(gothicDC, textTemp, -1, &rectTmp, DT_RIGHT);
+				tmp++;
 			}
 
 			BitBlt(backDC, boxInven.GetRect().left, boxInven.GetRect().top, boxInven.GetRect().right, boxInven.GetRect().bottom, gothicDC, boxInven.GetPos().x, boxInven.GetPos().y, SRCAND);
 			ReleaseGothicDC();
+			break;
+		case 3:
+			sizegothic = 30;
+			GetGoyangDC(backDC);
+			itemInfoBox.Render(backDC);
+			closeButton.Render(backDC);
+			AdjustRect(&rectTmp, 276, 523, 716, 553);
+			DrawText(goyangDC, _T("아이템을 사용할 고양이를 클릭하세요"), -1, &rectTmp, DT_LEFT);
+			BitBlt(backDC, 276, 523, 716, 553, goyangDC, 276, 523, SRCAND);
+			if (isChooseFeed)
+			{
+				selectedFeed->second->Render(backDC);
+			}
+			ReleaseGoyangDC();
+			break;
 		}
 		break;
 	case SN_COLLECTION:
@@ -466,7 +539,7 @@ void GameMain::GetGoyangDC(HDC hdc)
 	goyangDC = CreateCompatibleDC(hdc);
 	oldGoyangBit = (HBITMAP)SelectObject(goyangDC, hBitmap);
 	FillRect(goyangDC, &rect, (HBRUSH)GetStockObject(WHITE_BRUSH));
-	hGoyang = CreateFont(sizegoyang, 0, 0, 0, 0, 0, 0, 0, HANGEUL_CHARSET, 0, 0, 0, VARIABLE_PITCH | FF_ROMAN, TEXT("Goyang"));
+	hGoyang = CreateFont(sizegoyang, 0, 0, 0, 0, 0, 0, 0, HANGEUL_CHARSET, 0, 0, NONANTIALIASED_QUALITY, VARIABLE_PITCH | FF_DONTCARE, TEXT("Goyang"));
 	oldGoyang = (HFONT)SelectObject(goyangDC, hGoyang);
 	SetBkMode(goyangDC, TRANSPARENT);
 }
@@ -478,7 +551,7 @@ void GameMain::GetGothicDC(HDC hdc)
 	gothicDC = CreateCompatibleDC(hdc);
 	oldGothicBit = (HBITMAP)SelectObject(gothicDC, hBitmap);
 	FillRect(gothicDC, &rect, (HBRUSH)GetStockObject(WHITE_BRUSH));
-	hGothic = CreateFont(sizegothic, 0, 0, 0, 0, 0, 0, 0, HANGEUL_CHARSET, 0, 0, 0, VARIABLE_PITCH | FF_ROMAN, TEXT("나눔고딕 Light"));
+	hGothic = CreateFont(sizegothic, 0, 0, 0, 0, 0, 0, 0, HANGEUL_CHARSET, 0, 0, NONANTIALIASED_QUALITY, VARIABLE_PITCH | FF_ROMAN, TEXT("나눔고딕 Light"));
 	oldGothic = (HFONT)SelectObject(gothicDC, hGothic);
 	SetBkMode(gothicDC, TRANSPARENT);
 }

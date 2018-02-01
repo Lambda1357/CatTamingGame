@@ -30,7 +30,9 @@ private:
 	ItemMap itemData;
 
 	Cat* infoCat;//클릭한 고양이 정보
-
+	bool isChooseFeed;
+	std::map<ItemCode::Feed, Item*>::iterator selectedFeed;
+	std::map<ItemCode::Toy, Item*>::iterator selectedToy;
 
 	//배경 리스트
 	Object background[LAST_SN];
@@ -47,6 +49,7 @@ private:
 	Object boxMoney, boxhairball;
 	Object invenButton;
 	Object boxInven;
+	Object itemInfoBox;
 
 	//시작 UI
 	Object logo;

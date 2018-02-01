@@ -65,10 +65,10 @@ Toy::Toy(ItemCode::Toy cd)
 	count = 0;
 }
 
-void Toy::UseItem(Cat target)
+void Toy::UseItem(Cat* target)
 {
-	target.AddButlerP(addButlerP);
-	target.AddLove(addLoveP);
+	target->AddButlerP(addButlerP);
+	target->AddLove(addLoveP);
 	count--;
 }
 
