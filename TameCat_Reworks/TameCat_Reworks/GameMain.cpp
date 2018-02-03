@@ -501,6 +501,7 @@ void GameMain::Render()
 		background[SN_COLLECTION].Render(backDC);
 		boxCollection.Render(backDC);
 		boxCollectPer.Render(backDC);
+
 		sizegothic = 40;
 		GetGothicDC(backDC);
 		AdjustRect(&rectTmp, 50, 40, 130, 80);
@@ -509,7 +510,9 @@ void GameMain::Render()
 		DrawText(gothicDC, textTemp, -1, &rectTmp, DT_RIGHT);
 		BitBlt(backDC, 50, 40, 130, 80, gothicDC, 50, 40, SRCAND);
 		ReleaseGothicDC();
+
 		backButton.Render(backDC);
+		CATCOLLECTDATA->Render(backDC);
 		break;
 	case SN_MINIGAME:
 		break;

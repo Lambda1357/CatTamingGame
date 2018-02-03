@@ -10,6 +10,7 @@ private:
 	std::map<CatCode, bool> collectData;
 	std::map<CatCode, Object> portrait;
 	Object UnknownPortrait;
+	Object bgBox;
 
 	CatCollectData();
 public:
@@ -17,6 +18,8 @@ public:
 	void CollectCat(CatCode cd) { collectData[cd] = true; }
 	bool IsCollected(CatCode cd) { return collectData[cd]; }
 	float GetPercent();
+	void Render(HDC hdc);
+	void Render(HDC hdc, CatCode cd);
 };
 
 #define CATCOLLECTDATA CatCollectData::GetInstance()

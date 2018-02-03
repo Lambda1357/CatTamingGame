@@ -7,7 +7,7 @@ CatCollectData::CatCollectData()
 {
 	for (int i = ONESTARCUT_CAT; i < LAST_CATCODE; i++)
 	{
-		if (!(i == ONESTARCUT_CAT || TWOSTARCUT_CAT || THREESTARCUT_CAT || LAST_CATCODE))
+		if ((i != ONESTARCUT_CAT) && (i != TWOSTARCUT_CAT) && (i != THREESTARCUT_CAT) && (i != LAST_CATCODE))
 		{
 			collectData[(CatCode)i] = false;
 			switch ((CatCode)i)
@@ -62,6 +62,8 @@ CatCollectData::CatCollectData()
 		}
 	}
 	UnknownPortrait.Init(_T("./resource/chara/cat_unknown.bmp"));
+	bgBox.Init(_T("./resource/item/bgBox.bmp"));
+	bgBox.SetSize(70, 70);
 }
 
 CatCollectData* CatCollectData::GetInstance()
@@ -88,4 +90,29 @@ float CatCollectData::GetPercent()
 		result = ((float)collectCnt / catCnt) * 100.0f;
 
 	return result;
+}
+
+void CatCollectData::Render(HDC hdc)
+{
+	for (int i = ONESTARCUT_CAT; i < LAST_CATCODE; i++)
+	{
+		if ((i != ONESTARCUT_CAT) && (i != TWOSTARCUT_CAT) && (i != THREESTARCUT_CAT) && (i != LAST_CATCODE))
+		{
+			if (i < TWOSTARCUT_CAT)
+			{
+				if(collectData[(CatCode)i]==true) portrait[(CatCode)i].Render(hdc, 204 + (95 * (i - 1)), 175, 70, 70, 0, 0, 70, 70);
+				else UnknownPortrait.Render(hdc, 204 + (95 * (i - 1)), 175, 70, 70, 0, 0, 70, 70);
+			}
+			else if (i < THREESTARCUT_CAT)
+			{
+				if (collectData[(CatCode)i] == true) portrait[(CatCode)i].Render(hdc, 204 + (95 * (i - (TWOSTARCUT_CAT + 1))), 315, 70, 70, 0, 0, 70, 70);
+				else UnknownPortrait.Render(hdc, 204 + (95 * (i - (TWOSTARCUT_CAT + 1))), 315, 70, 70, 0, 0, 70, 70);
+			}
+			else if (i < LAST_CATCODE)
+			{
+				if (collectData[(CatCode)i] == true) portrait[(CatCode)i].Render(hdc, 204 + (95 * (i - (THREESTARCUT_CAT + 1))), 455, 70, 70, 0, 0, 70, 70);
+				else UnknownPortrait.Render(hdc, 204 + (95 * (i - (THREESTARCUT_CAT + 1))), 455, 70, 70, 0, 0, 70, 70);
+			}
+		}
+	}
 }
