@@ -66,6 +66,10 @@ void GameMain::Init()
 	collectionButton.SetPos(696, 475);
 	collectionButton.SetSize(200, 75);
 
+	minigameButton.Init(_T("./resource/UI/minigameButton.bmp"));
+	minigameButton.SetPos(386, 475);
+	minigameButton.SetSize(200, 75);
+
 	//컬렉션 UI
 	boxCollection.Init(_T("./resource/UI/boxCollection.bmp"));
 	boxCollection.SetPos(90, 120);
@@ -230,6 +234,12 @@ void GameMain::Update()
 			if (INPUTMANEGER->IsHit(collectionButton))
 			{
 				SCENEMANEGER->SetScene(SN_COLLECTION);
+				break;
+			}
+
+			if (INPUTMANEGER->IsHit(minigameButton))
+			{
+				SCENEMANEGER->SetScene(SN_MINIGAME);
 				break;
 			}
 			for (int i = 0; i < 20; i++)
@@ -406,6 +416,7 @@ void GameMain::Render()
 		// 씬/상태 전환 버튼
 		invenButton.Render(backDC);
 		collectionButton.Render(backDC);
+		minigameButton.Render(backDC);
 
 		switch (SCENEMANEGER->GetStatus())
 		{
@@ -505,7 +516,7 @@ void GameMain::Render()
 		sizegothic = 40;
 		GetGothicDC(backDC);
 		AdjustRect(&rectTmp, 50, 40, 130, 80);
-		if(CATCOLLECTDATA->GetPercent()<100.0f) swprintf(textTemp, _T("%.1f"), CATCOLLECTDATA->GetPercent());
+		if (CATCOLLECTDATA->GetPercent() < 100.0f) swprintf(textTemp, _T("%.1f"), CATCOLLECTDATA->GetPercent());
 		else swprintf(textTemp, _T("100"));
 		DrawText(gothicDC, textTemp, -1, &rectTmp, DT_RIGHT);
 		BitBlt(backDC, 50, 40, 130, 80, gothicDC, 50, 40, SRCAND);
@@ -515,6 +526,7 @@ void GameMain::Render()
 		CATCOLLECTDATA->Render(backDC);
 		break;
 	case SN_MINIGAME:
+		background[SN_MINIGAME].Render(backDC);
 		break;
 	default:
 		break;

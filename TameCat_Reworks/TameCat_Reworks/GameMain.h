@@ -52,6 +52,7 @@ private:
 	Object boxInven;
 	Object itemInfoBox;
 	Object collectionButton;
+	Object minigameButton;
 
 	//ÄÃ·º¼Ç ¾À UI
 	Object boxCollection;
