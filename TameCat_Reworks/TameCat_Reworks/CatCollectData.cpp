@@ -20,3 +20,20 @@ CatCollectData* CatCollectData::GetInstance()
 	}
 	return uniqueInst;
 }
+
+float CatCollectData::GetPercent()
+{
+	int catCnt = 0, collectCnt = 0;
+	float result;
+	for (auto it = collectData.begin(); it != collectData.end(); it++)
+	{
+		catCnt++;
+		if (it->second == true) collectCnt++;
+	}
+	if (collectCnt == 0)
+		result = 0.0f;
+	else
+		result = ((float)collectCnt / catCnt) * 100.0f;
+
+	return result;
+}

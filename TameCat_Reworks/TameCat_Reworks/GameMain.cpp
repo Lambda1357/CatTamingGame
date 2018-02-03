@@ -500,13 +500,14 @@ void GameMain::Render()
 	case SN_COLLECTION:
 		background[SN_COLLECTION].Render(backDC);
 		boxCollection.Render(backDC);
-		wsprintf(textTemp,_T("%d"),)
 		boxCollectPer.Render(backDC);
 		sizegothic = 40;
 		GetGothicDC(backDC);
 		AdjustRect(&rectTmp, 50, 40, 130, 80);
-		tmp
-		
+		if(CATCOLLECTDATA->GetPercent()<100.0f) swprintf(textTemp, _T("%.1f"), CATCOLLECTDATA->GetPercent());
+		else swprintf(textTemp, _T("100"));
+		DrawText(gothicDC, textTemp, -1, &rectTmp, DT_RIGHT);
+		BitBlt(backDC, 50, 40, 130, 80, gothicDC, 50, 40, SRCAND);
 		ReleaseGothicDC();
 		backButton.Render(backDC);
 		break;

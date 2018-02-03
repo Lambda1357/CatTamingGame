@@ -14,6 +14,7 @@ public:
 	static CatCollectData* GetInstance();
 	void CollectCat(CatCode cd) { collectData[cd] = true; }
 	bool IsCollected(CatCode cd) { return collectData[cd]; }
+	float GetPercent();
 };
 
 #define CATCOLLECTDATA CatCollectData::GetInstance()
