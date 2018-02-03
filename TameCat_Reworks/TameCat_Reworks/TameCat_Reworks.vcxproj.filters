@@ -44,6 +44,9 @@
     <Filter Include="ItemMap\Item\Deco">
       <UniqueIdentifier>{62d93f28-af98-425f-8b70-cc6619cc3645}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Singletone Classes\CatCollectData">
+      <UniqueIdentifier>{f8ae50f0-25fa-42af-8e51-7604885a2b8c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="_ScreenCopy.h">
@@ -97,6 +100,9 @@
     <ClInclude Include="ItemMap.h">
       <Filter>ItemMap</Filter>
     </ClInclude>
+    <ClInclude Include="CatCollectData.h">
+      <Filter>Singletone Classes\CatCollectData</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -130,6 +136,7 @@
     <ClCompile Include="Deco.cpp">
       <Filter>ItemMap\Item\Deco</Filter>
     </ClCompile>
+    <ClCompile Include="CatCollectData.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="TameCat_Reworks.rc">

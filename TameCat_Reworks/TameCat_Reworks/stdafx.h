@@ -28,7 +28,7 @@
 #include "SceneManeger.h"
 #include "Object.h"
 #include "InputManeger.h"
-#include "Cat.h"
+#include "CatCollectData.h"
 #include "GameMain.h"
 #include "_ScreenCopy.h"
 #include "RectFunc.h"

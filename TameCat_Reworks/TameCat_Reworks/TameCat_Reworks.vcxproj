@@ -139,6 +139,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cat.h" />
+    <ClInclude Include="CatCollectData.h" />
     <ClInclude Include="Deco.h" />
     <ClInclude Include="Feed.h" />
     <ClInclude Include="GameMain.h" />
@@ -158,6 +159,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Cat.cpp" />
+    <ClCompile Include="CatCollectData.cpp" />
     <ClCompile Include="Deco.cpp" />
     <ClCompile Include="Feed.cpp" />
     <ClCompile Include="GameMain.cpp" />

@@ -33,7 +33,9 @@ enum CatCode
 
 	CAT_FLOWER,
 	CAT_RAINBOW,
-	CAT_HEROS
+	CAT_HEROS,
+
+	LAST_CATCODE
 };
 
 class Cat : public Object

@@ -58,6 +58,10 @@ void GameMain::Init()
 	itemInfoBox.SetPos(189, 500);
 	itemInfoBox.SetSize(600, 75);
 
+	collectionButton.Init(TEXT("./resource/UI/collectionButton.bmp"));
+	collectionButton.SetPos(696, 475);
+	collectionButton.SetSize(200, 75);
+
 	//시작 UI
 	logo.Init(TEXT("./resource/UI/logo.bmp"));
 	logo.SetPos(339, 40);
@@ -75,10 +79,6 @@ void GameMain::Init()
 	background[SN_COLLECTION].Init(TEXT("./resource/Background/bg_collection.bmp"));
 	background[SN_COLLECTION].SetPos(0, 0);
 	background[SN_COLLECTION].SetSize(978, 600);
-
-	background[SN_SHOP].Init(TEXT("./resource/Background/bg_shop.bmp"));
-	background[SN_SHOP].SetPos(0, 0);
-	background[SN_SHOP].SetSize(978, 600);
 
 	background[SN_MINIGAME].Init(TEXT("./resource/Background/bg_fishing.bmp"));
 	background[SN_MINIGAME].SetPos(0, 0);
@@ -209,6 +209,12 @@ void GameMain::Update()
 				SCENEMANEGER->SetStatus(2);
 				break;
 			}
+
+			if (INPUTMANEGER->IsHit(collectionButton))
+			{
+				SCENEMANEGER->SetScene(SN_COLLECTION);
+				break;
+			}
 			for (int i = 0; i < 20; i++)
 			{
 				if (catlist[i] != NULL)
@@ -305,8 +311,6 @@ void GameMain::Update()
 		break;
 	case SN_COLLECTION:
 		break;
-	case SN_SHOP:
-		break;
 	case SN_MINIGAME:
 		break;
 	default:
@@ -360,9 +364,9 @@ void GameMain::Render()
 				catlist[i]->Render(backDC);
 		}
 
+		//수치 표시 박스
 		boxMoney.Render(backDC);
 		boxhairball.Render(backDC);
-		invenButton.Render(backDC);
 
 		sizegoyang = 30;
 		GetGoyangDC(backDC);
@@ -376,6 +380,10 @@ void GameMain::Render()
 			goyangDC, boxMoney.GetRect().left, boxMoney.GetRect().top, SRCAND);
 
 		ReleaseGoyangDC();
+
+		// 씬/상태 전환 버튼
+		invenButton.Render(backDC);
+		collectionButton.Render(backDC);
 
 		switch (SCENEMANEGER->GetStatus())
 		{
@@ -469,8 +477,6 @@ void GameMain::Render()
 		break;
 	case SN_COLLECTION:
 		background[SN_COLLECTION].Render(backDC);
-		break;
-	case SN_SHOP:
 		break;
 	case SN_MINIGAME:
 		break;

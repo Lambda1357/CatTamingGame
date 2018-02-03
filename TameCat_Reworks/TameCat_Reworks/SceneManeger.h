@@ -6,7 +6,6 @@ enum SceneNumber
 	SN_START,
 	SN_HOME,
 	SN_COLLECTION,
-	SN_SHOP,
 	SN_MINIGAME,
 
 	LAST_SN //1 –u °ªÀÌ ¾ÀÀÇ ÃÑ °¹¼ö

@@ -50,6 +50,7 @@ private:
 	Object invenButton;
 	Object boxInven;
 	Object itemInfoBox;
+	Object collectionButton;
 
 	//Ω√¿€ UI
 	Object logo;

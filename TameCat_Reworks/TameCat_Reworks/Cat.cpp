@@ -88,6 +88,8 @@ void Cat::Init(TCHAR* imgRoot, CatCode m_catCode)
 		_tcscpy(catName, TEXT("이름오류! 문의주세요"));
 		break;
 	}
+
+	CATCOLLECTDATA->CollectCat(m_catCode);
 }
 
 void Cat::Update()
