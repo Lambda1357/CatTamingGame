@@ -37,6 +37,10 @@ void GameMain::Init()
 	longButton.SetPos(389, 463);
 	longButton.SetSize(200, 75);
 
+	backButton.Init(_T("./resource/UI/backButton.bmp"));
+	backButton.SetPos(838, 30);
+	backButton.SetSize(70, 60);
+
 	//홈 UI
 	boxMoney.Init(TEXT("./resource/UI/boxMoney.bmp"));
 	RECT money = { 69,30,219,90 };
@@ -61,6 +65,19 @@ void GameMain::Init()
 	collectionButton.Init(TEXT("./resource/UI/collectionButton.bmp"));
 	collectionButton.SetPos(696, 475);
 	collectionButton.SetSize(200, 75);
+
+	//컬렉션 UI
+	boxCollection.Init(_T("./resource/UI/boxCollection.bmp"));
+	boxCollection.SetPos(90, 120);
+	boxCollection.SetSize(800, 420);
+
+	boxInfoCollect.Init(_T("./resource/UI/boxInfoCollect.bmp"));
+	boxInfoCollect.SetPos(139, 150);
+	boxInfoCollect.SetSize(700, 300);
+
+	boxCollectPer.Init(_T("./resource/UI/boxCollectPer.bmp"));
+	boxCollectPer.SetPos(40, 30);
+	boxCollectPer.SetSize(150, 60);
 
 	//시작 UI
 	logo.Init(TEXT("./resource/UI/logo.bmp"));
@@ -310,6 +327,11 @@ void GameMain::Update()
 		}
 		break;
 	case SN_COLLECTION:
+		if (INPUTMANEGER->IsHit(backButton))
+		{
+			SCENEMANEGER->SetScene(SN_HOME);
+			break;
+		}
 		break;
 	case SN_MINIGAME:
 		break;
@@ -477,6 +499,16 @@ void GameMain::Render()
 		break;
 	case SN_COLLECTION:
 		background[SN_COLLECTION].Render(backDC);
+		boxCollection.Render(backDC);
+		wsprintf(textTemp,_T("%d"),)
+		boxCollectPer.Render(backDC);
+		sizegothic = 40;
+		GetGothicDC(backDC);
+		AdjustRect(&rectTmp, 50, 40, 130, 80);
+		tmp
+		
+		ReleaseGothicDC();
+		backButton.Render(backDC);
 		break;
 	case SN_MINIGAME:
 		break;

@@ -5,7 +5,11 @@ CatCollectData* CatCollectData::uniqueInst = NULL;
 
 CatCollectData::CatCollectData()
 {
-	for (int i = ONESTARCUT_CAT; i < LAST_CATCODE; i++) collectData[(CatCode)i] = false;
+	for (int i = ONESTARCUT_CAT; i < LAST_CATCODE; i++)
+	{
+		if (!(i == ONESTARCUT_CAT || TWOSTARCUT_CAT || THREESTARCUT_CAT || LAST_CATCODE));
+			collectData[(CatCode)i] = false;
+	}
 }
 
 CatCollectData* CatCollectData::GetInstance()

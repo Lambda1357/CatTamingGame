@@ -44,15 +44,21 @@ private:
 	Object longButton;
 	Object shortButton;
 	Object closeButton;
+	Object backButton;
 
-	//»® UI
+	//»® æ¿ UI
 	Object boxMoney, boxhairball;
 	Object invenButton;
 	Object boxInven;
 	Object itemInfoBox;
 	Object collectionButton;
 
-	//Ω√¿€ UI
+	//ƒ√∑∫º« æ¿ UI
+	Object boxCollection;
+	Object boxInfoCollect;
+	Object boxCollectPer;
+
+	//Ω√¿€ æ¿ UI
 	Object logo;
 
 	int curentCatnum;
