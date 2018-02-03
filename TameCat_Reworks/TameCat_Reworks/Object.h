@@ -19,6 +19,7 @@ public:
 	Object();
 	~Object();
 	virtual void Render(HDC hdc);
+	void Render(HDC hdc, int xDest, int yDest, int wDest, int hDest, int xSrc, int ySrc, int wSrc, int hSrc);
 	inline POINT GetSize() { POINT pt = { sizeX,sizeY }; return pt; };
 };
 

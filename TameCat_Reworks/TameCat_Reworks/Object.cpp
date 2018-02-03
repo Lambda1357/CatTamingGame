@@ -22,6 +22,17 @@ void Object::Render(HDC hdc)
 	DeleteDC(imgDC);
 }
 
+void Object::Render(HDC hdc, int xDest, int yDest, int wDest, int hDest, int xSrc, int ySrc, int wSrc, int hSrc)
+{
+	imgDC = CreateCompatibleDC(hdc);
+
+	oldBitmap = (HBITMAP)SelectObject(imgDC, myBitmap);
+	TransparentBlt(hdc, xDest, yDest, wDest, hDest, imgDC, xSrc, ySrc, wSrc, hSrc, RGB(255, 0, 255));
+
+	SelectObject(imgDC, oldBitmap);
+	DeleteDC(imgDC);
+}
+
 void Object::Init(TCHAR* imageRoot)
 {
 	myBitmap = (HBITMAP)LoadImage(NULL, imageRoot, IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE | LR_CREATEDIBSECTION);

@@ -8,6 +8,8 @@ class CatCollectData
 private:
 	static CatCollectData* uniqueInst;
 	std::map<CatCode, bool> collectData;
+	std::map<CatCode, Object> portrait;
+	Object UnknownPortrait;
 
 	CatCollectData();
 public:
