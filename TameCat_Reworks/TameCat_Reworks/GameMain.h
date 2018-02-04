@@ -1,5 +1,7 @@
 #pragma once
 #include "ItemMap.h"
+#include "PercentBar.h"
+#include "MinigameRewordCode.h"
 
 extern HINSTANCE hInst;
 
@@ -24,6 +26,14 @@ private:
 	HBITMAP backBit;
 	HBITMAP hOldbit;
 	Cat* catlist[20];
+
+	//미니게임용 변수
+	MinigameRewordCode rewordType;
+	int rewordGoldAmount;
+	Item* rewordDeco;
+	Item* rewordFeed;
+	Item* rewordToy;
+	int rewordItemAmount;
 
 	Object forestBg, parkBg;
 
@@ -60,9 +70,9 @@ private:
 	Object boxCollectPer;
 
 	//미니게임 씬 UI
-	Object boxStart;
+	Object startButton;
 	Object fishingRod[4];
-
+	PercentBar minigameBar;
 
 	//시작 씬 UI
 	Object logo;
@@ -78,6 +88,8 @@ private:
 	void GetGothicDC(HDC hdc);
 	void ReleaseGoyangDC();
 	void ReleaseGothicDC();
+
+	void SetMinigameReword();
 public:
 	void Init();
 	void Update();

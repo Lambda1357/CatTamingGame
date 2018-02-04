@@ -26,8 +26,12 @@ void InputManeger::Init()
 
 void InputManeger::Update()
 {
+	isSpaceDown = false;
+
 	::GetCursorPos(&mousepos);
 	::ScreenToClient(g_Hwnd, &mousepos);
+
+	if (GetAsyncKeyState(VK_SPACE) & 0x8000) isSpaceDown = true;
 
 	isClick_prv = isClick_cur;
 }
@@ -67,4 +71,9 @@ BOOL InputManeger::IsHit(RECT objRect)
 		return TRUE;
 	//¾Æ´Ï¸é °ÅÁþ
 	else return FALSE;
+}
+
+BOOL InputManeger::IsSpaceDown()
+{
+	return isSpaceDown;
 }

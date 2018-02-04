@@ -50,6 +50,9 @@
     <Filter Include="Object\PercentBar">
       <UniqueIdentifier>{91d73b68-fd58-4e9d-ac85-6c3e41cbb9ab}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameMain\MinigameRewordCode">
+      <UniqueIdentifier>{03f14b19-57e4-47e8-a02f-551b7c0cb335}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="_ScreenCopy.h">
@@ -109,6 +112,9 @@
     <ClInclude Include="PercentBar.h">
       <Filter>Object\PercentBar</Filter>
     </ClInclude>
+    <ClInclude Include="MinigameRewordCode.h">
+      <Filter>GameMain\MinigameRewordCode</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -143,6 +149,10 @@
       <Filter>ItemMap\Item\Deco</Filter>
     </ClCompile>
     <ClCompile Include="CatCollectData.cpp" />
+    <ClCompile Include="PercentBar.cpp" />
+    <ClCompile Include="ItemMap.cpp">
+      <Filter>ItemMap</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="TameCat_Reworks.rc">

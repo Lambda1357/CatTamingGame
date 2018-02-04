@@ -83,6 +83,30 @@ void GameMain::Init()
 	boxCollectPer.SetPos(40, 30);
 	boxCollectPer.SetSize(150, 60);
 
+	//미니게임 UI
+	startButton.Init(_T("./resource/UI/startButton.bmp"));
+	startButton.SetPos(389, 475);
+	startButton.SetSize(200, 75);
+
+	fishingRod[0].Init(_T("./resource/UI/fishingRod0.bmp"));
+	fishingRod[0].SetPos(289, 100);
+	fishingRod[0].SetSize(400, 500);
+
+	fishingRod[1].Init(_T("./resource/UI/fishingRod1.bmp"));
+	fishingRod[1].SetPos(289, 100);
+	fishingRod[1].SetSize(400, 500);
+
+	fishingRod[2].Init(_T("./resource/UI/fishingRod2.bmp"));
+	fishingRod[2].SetPos(289, 100);
+	fishingRod[2].SetSize(400, 500);
+
+	fishingRod[3].Init(_T("./resource/UI/fishingRod3.bmp"));
+	fishingRod[3].SetPos(289, 100);
+	fishingRod[3].SetSize(400, 500);
+
+	minigameBar.Init(_T("./resource/UI/minigameBar_bg"), _T("./resource/UI/minigameBar_fg"));
+	minigameBar.AdjustValue(98.0f);
+
 	//시작 UI
 	logo.Init(TEXT("./resource/UI/logo.bmp"));
 	logo.SetPos(339, 40);
@@ -209,6 +233,7 @@ void GameMain::Init()
 void GameMain::Update()
 {
 	RECT tmpHitbox;
+	static int minigameDelay;
 	switch (SCENEMANEGER->GetScene())
 	{
 	case SN_START:
@@ -233,6 +258,8 @@ void GameMain::Update()
 
 			if (INPUTMANEGER->IsHit(collectionButton))
 			{
+				backButton.SetPos(838, 30);
+				
 				SCENEMANEGER->SetScene(SN_COLLECTION);
 				break;
 			}
@@ -367,9 +394,23 @@ void GameMain::Update()
 		{
 		case 0:
 			//시작 전
+			if (INPUTMANEGER->IsHit(backButton)) SCENEMANEGER->SetScene(SN_HOME);
+
+			if (INPUTMANEGER->IsHit(startButton))
+			{
+				//시작 버튼을 눌렀을 때 물고기 입질 프레임이 정해지고 상태 전환함
+				minigameDelay = (rand() % 32767) + 256;
+				SCENEMANEGER->SetStatus(1);
+			}
 			break;
 		case 1:
 			//입질 대기중
+			if (minigameDelay < 0)
+			{
+				//보상을 정해두고 보상에 맞게 난이도 설정
+				SCENEMANEGER->SetStatus(2);
+			}
+			minigameDelay--;
 			break;
 		case 2:
 			//입질 걸림
@@ -565,6 +606,24 @@ void GameMain::Render()
 		break;
 	case SN_MINIGAME:
 		background[SN_MINIGAME].Render(backDC);
+		fishingRod[SCENEMANEGER->GetStatus()].Render(backDC);
+		switch (SCENEMANEGER->GetStatus())
+		{
+		case 0:
+			//시작 전
+			backButton.Render(backDC);
+			startButton.Render(backDC);
+			break;
+		case 1:
+			//입질 대기중
+			break;
+		case 2:
+			//입질 걸림
+			break;
+		case 3:
+			//보상
+			break;
+		}
 		break;
 	default:
 		break;
@@ -664,6 +723,56 @@ void GameMain::ReleaseGothicDC()
 	DeleteDC(gothicDC);
 }
 
+void GameMain::SetMinigameReword()
+{
+	rewordType = MinigameRewordCode(rand() % PRIZE_COUNT);
+	switch (rewordType)
+	{
+	case GOLD_PRIZE:
+		rewordGoldAmount = (rand() % 150) + 112;
+		break;
+	case CAT_PRIZE:
+
+		break;
+	case DECO_PRIZE:
+	{
+		auto prize = itemData.deco.begin();
+		for (int i = 1; i < rand() % itemData.deco.size(); i++) prize++;
+
+		if (prize->second->GetCount() <= 0)
+		{
+			rewordDeco = prize->second;
+			rewordItemAmount = 1;
+		}
+		else
+		{
+			rewordType = GOLD_PRIZE;
+			rewordGoldAmount = (rand() % 150) + 112;
+		}
+
+		break;
+	}
+	case TOY_PRIZE:
+	{
+		auto prize = itemData.toy.begin();
+		for (int i = 1; i < rand() % itemData.toy.size(); i++) prize++;
+
+		rewordToy = prize->second;
+		rewordItemAmount = 1 + rand() % 3;
+	}
+		break;
+	case FEED_PRIZE:
+	{
+		auto prize = itemData.feed.begin();
+		for (int i = 1; i < rand() % itemData.feed.size(); i++) prize++;
+
+		rewordFeed = prize->second;
+		rewordItemAmount = 1 + rand() % 3;
+	}
+		break;
+	}
+}
+
 GameMain::GameMain()
 {
 }
@@ -672,5 +781,3 @@ GameMain::GameMain()
 GameMain::~GameMain()
 {
 }
-
-//private:

@@ -147,6 +147,7 @@
     <ClInclude Include="Item.h" />
     <ClInclude Include="ItemCode.h" />
     <ClInclude Include="ItemMap.h" />
+    <ClInclude Include="MinigameRewordCode.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="PercentBar.h" />
     <ClInclude Include="RectFunc.h" />
@@ -166,7 +167,9 @@
     <ClCompile Include="GameMain.cpp" />
     <ClCompile Include="InputManeger.cpp" />
     <ClCompile Include="Item.cpp" />
+    <ClCompile Include="ItemMap.cpp" />
     <ClCompile Include="Object.cpp" />
+    <ClCompile Include="PercentBar.cpp" />
     <ClCompile Include="SceneManeger.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

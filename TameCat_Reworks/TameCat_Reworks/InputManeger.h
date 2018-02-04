@@ -7,8 +7,7 @@ private:
 	BOOL isClick_cur;
 	BOOL isClick_prv;
 
-	BOOL isSpaceDown_cur;
-	BOOL isSpaceDown_prv;
+	BOOL isSpaceDown;
 
 	InputManeger();
 	~InputManeger();
@@ -20,6 +19,7 @@ public:
 	void LbuttonUp();
 	BOOL IsHit(Object);
 	BOOL IsHit(RECT);
+	BOOL IsSpaceDown();
 };
 
 
