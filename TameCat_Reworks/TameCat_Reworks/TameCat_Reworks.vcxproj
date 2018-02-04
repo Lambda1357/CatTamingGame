@@ -148,6 +148,7 @@
     <ClInclude Include="ItemCode.h" />
     <ClInclude Include="ItemMap.h" />
     <ClInclude Include="Object.h" />
+    <ClInclude Include="PercentBar.h" />
     <ClInclude Include="RectFunc.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="SceneManeger.h" />

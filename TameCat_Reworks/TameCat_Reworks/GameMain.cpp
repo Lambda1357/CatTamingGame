@@ -331,8 +331,27 @@ void GameMain::Update()
 					}
 				}
 			}
-
-			//TODO:인벤토리 상태에서 누른 장난감 아이템을 고양이를 눌러 체크하도록 만들기
+			else
+			{
+				if (INPUTMANEGER->IsHit(closeButton))
+				{
+					SCENEMANEGER->SetStatus(2);
+					closeButton.SetPos(795, 160);
+					break;
+				}
+				else
+				{
+					for (int i = 0; i < 20; i++)
+					{
+						if (catlist[i] != NULL)
+							if (INPUTMANEGER->IsHit(*catlist[i]))
+							{
+								selectedToy->second->UseItem(catlist[i]);
+								SCENEMANEGER->SetStatus(0);
+							}
+					}
+				}
+			}
 			break;
 		}
 		break;
@@ -344,6 +363,21 @@ void GameMain::Update()
 		}
 		break;
 	case SN_MINIGAME:
+		switch (SCENEMANEGER->GetStatus())
+		{
+		case 0:
+			//시작 전
+			break;
+		case 1:
+			//입질 대기중
+			break;
+		case 2:
+			//입질 걸림
+			break;
+		case 3:
+			//보상
+			break;
+		}
 		break;
 	default:
 		break;
@@ -503,6 +537,10 @@ void GameMain::Render()
 			if (isChooseFeed)
 			{
 				selectedFeed->second->Render(backDC);
+			}
+			else
+			{
+				selectedToy->second->Render(backDC);
 			}
 			ReleaseGoyangDC();
 			break;

@@ -47,6 +47,9 @@
     <Filter Include="Singletone Classes\CatCollectData">
       <UniqueIdentifier>{f8ae50f0-25fa-42af-8e51-7604885a2b8c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Object\PercentBar">
+      <UniqueIdentifier>{91d73b68-fd58-4e9d-ac85-6c3e41cbb9ab}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="_ScreenCopy.h">
@@ -102,6 +105,9 @@
     </ClInclude>
     <ClInclude Include="CatCollectData.h">
       <Filter>Singletone Classes\CatCollectData</Filter>
+    </ClInclude>
+    <ClInclude Include="PercentBar.h">
+      <Filter>Object\PercentBar</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

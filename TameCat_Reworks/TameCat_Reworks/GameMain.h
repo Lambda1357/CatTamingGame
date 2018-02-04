@@ -59,6 +59,11 @@ private:
 	Object boxInfoCollect;
 	Object boxCollectPer;
 
+	//πÃ¥œ∞‘¿” æ¿ UI
+	Object boxStart;
+	Object fishingRod[4];
+
+
 	//Ω√¿€ æ¿ UI
 	Object logo;
 

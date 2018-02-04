@@ -62,7 +62,7 @@ Toy::Toy(ItemCode::Toy cd)
 		break;
 	}
 	myCode = cd;
-	count = 0;
+	count = 1;
 }
 
 void Toy::UseItem(Cat* target)
