@@ -104,7 +104,7 @@ void GameMain::Init()
 	fishingRod[3].SetPos(289, 100);
 	fishingRod[3].SetSize(400, 500);
 
-	minigameBar.Init(_T("./resource/UI/minigameBar_bg"), _T("./resource/UI/minigameBar_fg"));
+	minigameBar.Init(_T("./resource/UI/minigameBar_bg.bmp"), _T("./resource/UI/minigameBar_fg.bmp"));
 	minigameBar.AdjustValue(98.0f);
 
 	//Ω√¿€ UI
